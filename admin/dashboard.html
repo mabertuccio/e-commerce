@@ -12,12 +12,15 @@
    <meta name="description" content="">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="../static/styles/styles_admin.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
 </head>
 
 <body>
    <div class="container">
       <div class="left-column">
          <div class="logo">
+            <img src="../static/images/WhatsApp Image 2024-04-03 at 5.04.28 PM.jpeg" alt="Logo">
          </div>
          <ul class="menu">
             <li><a href="#">Usuarios</a></li>
@@ -30,7 +33,7 @@
          <div class="content">
             <div class="header-content">
                <p class="header-content-title">Gestor de contenido</p>
-               <button class="header-content-add">Agregar </button>
+               <button class="btn btn-primary">Agregar </button>
             </div>
             <hr>
             <table>
@@ -41,24 +44,70 @@
                </tr>
                <tr>
                   <td>1</td>
-                  <td>Monitor</td>
-                  <td>Editar</td>
-                  <td>Eliminar</td>
+                  <td>Teclado</td>
+                  <td class="action-cell">
+                     <!-- Botón para eliminar con color rojo -->
+                     <button class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                     </button>
+                     <!-- Botón para editar con color gris -->
+                     <button class="btn btn-secondary">
+                        <i class="fas fa-edit"></i>
+                     </button>
+                  </td>
                </tr>
                <tr>
                   <td>2</td>
-                  <td>Teclado</td>
-                  <td>Editar</td>
-                  <td>Eliminar</td>
-
+                  <td>Mouse</td>
+                  <td class="action-cell">
+                     <!-- Botón para eliminar con color rojo -->
+                     <button class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                     </button>
+                     <!-- Botón para editar con color gris -->
+                     <button class="btn btn-secondary">
+                        <i class="fas fa-edit"></i>
+                     </button>
+                  </td>
                </tr>
                <tr>
                   <td>3</td>
-                  <td>Mouse </td>
-                  <td>Editar</td>
-                  <td>Eliminar</td>
+                  <td>Monitor</td>
+                  <td class="action-cell">
+                     <!-- Botón para eliminar con color rojo -->
+                     <button class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                     </button>
+                     <!-- Botón para editar con color gris -->
+                     <button class="btn btn-secondary">
+                        <i class="fas fa-edit"></i>
+                     </button>
+                  </td>
+               </tr>
+               <tr>
+                  <td>4</td>
+                  <td>Pad</td>
+                  <td class="action-cell">
+                     <!-- Botón para eliminar con color rojo -->
+                     <button class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                     </button>
+                     <!-- Botón para editar con color gris -->
+                     <button class="btn btn-secondary">
+                        <i class="fas fa-edit"></i>
+                     </button>
+                  </td>
                </tr>
             </table>
+            <div class="pagination">
+               <a href="#">&laquo;</a>
+               <a href="#" class="active">1</a>
+               <a href="#">2</a>
+               <a href="#">3</a>
+               <a href="#">4</a>
+               <a href="#">5</a>
+               <a href="#">&raquo;</a>
+            </div>
          </div>
       </div>
       <div class="footer">

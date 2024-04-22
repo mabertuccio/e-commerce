@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="checkout.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="checkout-container">
+      <h2>CHECKOUT</h2>
+      <form action="#">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="card">Card Number:</label>
+          <input
+            type="text"
+            id="card"
+            name="card"
+            placeholder="XXXX-XXXX-XXXX-XXXX"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exp">Expiration Date:</label>
+          <input type="text" id="exp" name="exp" placeholder="MM/YY" required />
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" name="cvv" placeholder="XXX" required />
+        </div>
+        <button class="checkout-button" type="submit">Confirm</button>
+      </form>
+    </div>
+  </body>
+</html>

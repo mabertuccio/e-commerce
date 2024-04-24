@@ -1,0 +1,286 @@
+@font-face {
+  font-family: 'Rubik';
+  src: url('../../fonts/Rubik-VariableFont_wght.ttf') format('truetype');
+}
+
+:root {
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
+  --light: #f8f9fa;
+  --dark: #343a40;
+}
+body {
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.left-column {
+  width: 200px; /* Ancho del Sidebar */
+  background-color: #faf8f9;
+  border: 1px solid #000;
+}
+
+.right-column {
+  flex: 1; /* El contenido ocupará el espacio restante */
+  padding: 20px;
+  background-color: #f0f8ff;
+  border: 1px solid #000;
+}
+
+.logo img {
+  width: 200px;
+  margin-bottom: 20px;
+  border: 1px solid #000;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid #000;
+}
+
+.menu li {
+  margin-bottom: 10px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+}
+
+.menu a:hover {
+  cursor: pointer;
+  color: var(--primary);
+}
+
+.header-content {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  margin-top: 20px;
+  border: 1px solid #000;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.content th {
+  background-color: #f0f8ff;
+  padding: 10px;
+  text-align: left;
+}
+
+.content td {
+  padding: 10px;
+  text-align: left;
+}
+.title-table {
+  width: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.action-cell {
+  text-align: center !important;
+}
+.table-action {
+  text-align: center !important;
+}
+.btn i {
+  vertical-align: middle;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+.btn-primary {
+  color: #fff;
+  background-color: var(--primary);
+  border-color: #6c757d;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  color: var(--dark);
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.pagination a.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+/* FOMRULARIO */
+.container-form {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.container-form h2 {
+  text-align: center;
+}
+.input-group-from-admin {
+  margin-bottom: 15px;
+}
+
+.input-group-from-admin label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group-from-admin input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(100% - 20px);
+}
+.input-group-from-admin textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(100% - 20px);
+}
+/* MARGENES */
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.7rem;
+}
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 0.7rem;
+}
+
+.mr-1 {
+  margin-right: 0.5rem;
+}
+.mr-2 {
+  margin-right: 0.7rem;
+}
+.ml-1 {
+  margin-left: 0.5rem;
+}
+.ml-2 {
+  margin-left: 0.7rem;
+}
+
+/* Estilos para el modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  animation-name: modalopen;
+  animation-duration: 0.4s;
+  border-radius: 5px; /* Añadido para imitar el estilo de Bootstrap */
+}
+.modal-content-open {
+  text-align: center;
+}
+/* Animación de apertura del modal */
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Botón de cerrar */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

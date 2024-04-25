@@ -1,7 +1,8 @@
 <?php
 echo "<h1>Paso</h1>";
+session_start();
 $_SESSION["username"] = "test";
-header("Location: proveedores.html");
+header("Location: ../pages/admin/admin/usuarios.php");
 exit;
 // Verificar si se enviaron los datos del formulario
 /* if ($_SERVER["REQUEST_METHOD"] == "POST") {

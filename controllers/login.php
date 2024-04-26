@@ -2,7 +2,7 @@
 echo "<h1>Paso</h1>";
 session_start();
 $_SESSION["username"] = "test";
-header("Location: ../pages/admin/admin/usuarios.php");
+header("Location: ../pages/admin/usuarios.php");
 exit;
 // Verificar si se enviaron los datos del formulario
 /* if ($_SERVER["REQUEST_METHOD"] == "POST") {

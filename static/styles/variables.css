@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'Rubik';
-    src: url('../../fonts/Rubik-VariableFont_wght.ttf') format('truetype');
-  }
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-Italic-VariableFont_wght.ttf') format('truetype');
+}
 :root {
   --primary: #007bff;
   --secondary: #6c757d;

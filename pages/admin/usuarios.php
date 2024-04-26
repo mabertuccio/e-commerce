@@ -41,7 +41,7 @@ $usuario = $_SESSION["username"];
             <hr>
             <table>
                <tr>
-                  <th class="title-table">Id</th>
+                  <th class=" title-table">Id</th>
                   <th>Usuario</th>
                   <th>Nombre</th>
                   <th>Rol</th>

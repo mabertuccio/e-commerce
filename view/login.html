@@ -11,7 +11,7 @@
     <title>Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" type="text/css" href="../static/styles/styles_admin.css">
     <style>
         .login-container {
             background-color: #fff;
@@ -49,26 +49,12 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
-        <form action="../../controllers/login.php" method="post">
+        <form action="../controllers/login.php" method="post">
             <h2>Iniciar Sesión</h2>
             <div class="input-group">
                 <label for="username">Usuario</label>
@@ -78,11 +64,10 @@
                 <label for="password">Contraseña</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
         </form>
     </div>
 
-    <script src="" async defer></script>
 </body>
 
 </html>

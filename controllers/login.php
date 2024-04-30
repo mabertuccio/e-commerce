@@ -1,37 +1,49 @@
 <?php
-echo "<h1>Paso</h1>";
-session_start();
-$_SESSION["username"] = "test";
-header("Location: ../pages/admin/usuarios.php");
-exit;
-// Verificar si se enviaron los datos del formulario
-/* if ($_SERVER["REQUEST_METHOD"] == "POST") {
+include 'bbdd.php';
 
-    // Verificar si se enviaron los campos de usuario y contraseña
-    if (isset($_POST["username"]) && isset($_POST["password"])) {
-        // Aquí deberías verificar los datos de inicio de sesión en tu base de datos
-        // Por ejemplo, podrías usar una consulta SQL para buscar el usuario en la base de datos
+$error_message = ""; // Inicializar la variable de mensaje de error
 
-        // Ejemplo básico de verificación (solo para propósitos de demostración)
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verificar si se enviaron los campos del formulario
+    if (isset($_POST["userEmail"]) && isset($_POST["userPassword"])) {
+        $username = $_POST["userEmail"];
+        $password = $_POST["userPassword"];
 
-        // Verificar si el usuario y la contraseña coinciden (en un entorno de producción, esto debe ser más seguro)
-        if ($username === "usuario" && $password === "contraseña") {
-            // Iniciar sesión (aquí podrías establecer variables de sesión, por ejemplo)
-            session_start();
-            $_SESSION["username"] = $username;
+        $stmt = $conn->prepare("SELECT user, pass, tipo_usuario FROM usuarios WHERE user = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Redireccionar a la página de inicio o a otra página después del inicio de sesión
-            header("Location: welcome.php");
-            exit;
+        if ($user) {
+            // Verificar la contraseña
+            if ($password == $user['pass']) {
+                if ($user['tipo_usuario'] == 'Cliente') {
+                    session_start();
+                    $_SESSION["usuario"] = $user['user'];
+                    $_SESSION['authenticated'] = true;
+                    header("Location: ../index.html");
+                    exit; // Salir del script después de la redirección
+                } elseif ($user['tipo_usuario'] == 'Vendedor') {
+                    session_start();
+                    $_SESSION["usuario"] = $user['user'];
+                    $_SESSION['authenticated'] = true;
+                    header("Location: ../pages/admin/usuarios.php");
+                    exit; // Salir del script después de la redirección
+                }
+            } else {
+                // Contraseña incorrecta
+                $error_message = "Credenciales inválidas";
+            }
         } else {
-            // Si el usuario y la contraseña no coinciden, mostrar un mensaje de error
-            echo "Usuario o contraseña incorrectos.";
+            // Usuario no encontrado
+            $error_message = "Usuario no encontrado";
         }
     } else {
-        // Si no se enviaron los campos de usuario y contraseña, mostrar un mensaje de error
-        echo "Por favor, complete todos los campos.";
+        // Campos del formulario no recibidos
+        $error_message = "Todos los campos son obligatorios";
     }
 }
- */
+
+// Si hay un mensaje de error, simplemente imprímelo en la página actual
+if (!empty($error_message)) {
+    echo "<div class='alerta-error'>$error_message</div>";
+}

@@ -80,7 +80,7 @@
                     <i class='bx bxl-linkedin'></i>
                 </div>
                 <p>o Iniciar Sesión con una cuenta</p>
-                <form action="../controllers/login.php" class="form form-login" novalidate>
+                <form action="../controllers/login.php" class="form form-login" method="post" novalidate>
                     <div>
                         <label>
                             <i class='bx bx-envelope'></i>
@@ -95,6 +95,9 @@
                     </div>
                     <input type="submit" value="Iniciar Sesión">
                     <div class="alerta-error">Todos los campos son obligatorios</div>
+                    <div class="error-login">
+                        <?php echo $error_message; ?>
+                    </div>
                     <div class="alerta-exito">Te registraste correctamente</div>
                 </form>
             </div>

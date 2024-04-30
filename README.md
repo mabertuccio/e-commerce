@@ -35,6 +35,121 @@ El proyecto se organizará en base al patrón de diseño Modelo-Vista-Controlado
 - **Vista:** Será responsable de la presentación de la interfaz de usuario.
 - **Controlador:** Actuará como intermediario entre el modelo y la vista, gestionando las solicitudes del usuario y coordinando las acciones correspondientes.
 
+
+## Base de datos
+```
+-- Tabla de usuarios
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user VARCHAR(50) NOT NULL,
+    pass VARCHAR(100) NOT NULL,
+    type_varchar VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+-- Tabla de proveedores
+CREATE TABLE proveedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    direccion VARCHAR(255),
+    email VARCHAR(100)
+);
+
+-- Tabla de productos
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    imagen VARCHAR(255),
+    precio DECIMAL(10, 2) NOT NULL,
+    cantidad INT NOT NULL,
+    estado TINYINT NOT NULL DEFAULT 1, -- 1 para activo, 0 para inactivo
+    id_proveedor INT,
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id)
+);
+
+-- Tabla de pagos
+CREATE TABLE pagos (
+    id_pago INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL,
+    numero_tarjeta VARCHAR(16) NOT NULL,
+    fecha_vencimiento DATE NOT NULL,
+    cvv VARCHAR(4) NOT NULL
+);
+
+-- Tabla de facturas
+CREATE TABLE facturas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE NOT NULL,
+    id_usuario INT NOT NULL,
+    precio_total DECIMAL(10, 2) NOT NULL,
+    id_pago INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+    FOREIGN KEY (id_pago) REFERENCES Pagos(id_pago)
+);
+
+-- Tabla de items de factura
+CREATE TABLE items_factura (
+    id_item INT AUTO_INCREMENT PRIMARY KEY,
+    id_factura INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_factura) REFERENCES facturas(id),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+
+
+-- Generación de datos aleatorios
+INSERT INTO usuarios (user, pass, type_varchar, email)
+VALUES 
+    ('usuario1', 'password1', 'Cliente', 'usuario1@example.com'),
+    ('usuario2', 'password2', 'Cliente', 'usuario2@example.com'),
+    ('usuario3', 'password3', 'Vendedor', 'usuario3@example.com'),
+    ('usuario4', 'password4', 'Cliente', 'usuario4@example.com'),
+    ('usuario5', 'password5', 'Vendedor', 'usuario5@example.com');
+
+INSERT INTO proveedores (nombre, direccion, email)
+VALUES 
+    ('Proveedor 1', 'Dirección del Proveedor 1', 'proveedor1@example.com'),
+    ('Proveedor 2', 'Dirección del Proveedor 2', 'proveedor2@example.com'),
+    ('Proveedor 3', 'Dirección del Proveedor 3', 'proveedor3@example.com'),
+    ('Proveedor 4', 'Dirección del Proveedor 4', 'proveedor4@example.com'),
+    ('Proveedor 5', 'Dirección del Proveedor 5', 'proveedor5@example.com');
+
+INSERT INTO productos (nombre, descripcion, imagen, precio, cantidad, estado, id_proveedor)
+VALUES 
+    ('Producto 1', 'Descripción del producto 1', 'imagen1.jpg', 10.99, 100, 1, 1),
+    ('Producto 2', 'Descripción del producto 2', 'imagen2.jpg', 20.49, 50, 1, 2),
+    ('Producto 3', 'Descripción del producto 3', 'imagen3.jpg', 15.75, 75, 1, 3),
+    ('Producto 4', 'Descripción del producto 4', 'imagen4.jpg', 5.25, 200, 1, 4),
+    ('Producto 5', 'Descripción del producto 5', 'imagen5.jpg', 30.00, 25, 1, 5);
+
+INSERT INTO pagos (tipo, numero_tarjeta, fecha_vencimiento, cvv)
+VALUES 
+    ('Tarjeta de Crédito', '1234567812345678', '2026-04-01', '123'),
+    ('Tarjeta de Crédito', '9876543298765432', '2025-05-01', '456'),
+    ('Tarjeta de Débito', '1111222233334444', '2025-06-01', '789'),
+    ('PayPal', 'paypal@example.com', '2025-07-01', '321'),
+    ('Transferencia Bancaria', 'Banco X, Cuenta Y', '2025-08-01', '654');
+INSERT INTO facturas (fecha, id_usuario, precio_total, id_pago)
+VALUES 
+    ('2024-04-23', 1, 100.00, 1),
+    ('2024-04-23', 2, 75.50, 2),
+    ('2024-04-23', 3, 200.25, 3),
+    ('2024-04-23', 4, 50.00, 4),
+    ('2024-04-23', 5, 300.00, 5);
+
+INSERT INTO items_factura (id_factura, id_producto, cantidad, precio_unitario)
+VALUES 
+    (1, 1, 2, 10.99),
+    (1, 2, 1, 20.49),
+    (2, 3, 3, 15.75),
+    (3, 4, 10, 5.25),
+    (4, 5, 1, 30.00);
+``` 
+
 ## Conclusiones
 
 El desarrollo de este proyecto permitirá a los estudiantes de las materias de Desarrollo Front-End y Back-End aplicar sus conocimientos en un contexto práctico y relevante. Además, les proporcionará experiencia en el trabajo colaborativo, la gestión de proyectos y la resolución de problemas reales en el desarrollo de aplicaciones web.

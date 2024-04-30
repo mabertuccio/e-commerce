@@ -1,10 +1,15 @@
 <?php
+include '../../controllers/bbdd.php';
 session_start();
-if (!isset($_SESSION["username"])) {
-   header("Location: login.php");
+if (!isset($_SESSION["usuario"])) {
+   header("Location: ../../index.html");
    exit;
 }
-$usuario = $_SESSION["username"];
+$usuario = $_SESSION["usuario"];
+
+$sql = "SELECT * FROM proveedores";
+$stmt = $conn->query($sql);
+$proveedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE <!DOCTYPE html>
@@ -41,98 +46,33 @@ $usuario = $_SESSION["username"];
                <tr>
                   <th class="title-table">Id</th>
                   <th>Nombre</th>
+                  <th>Dirección</th>
+                  <th>Email</th>
                   <th class="table-action">Acciones</th>
+
                </tr>
-               <tr>
-                  <td>1</td>
-                  <td>Lenovo</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
-               <tr>
-                  <td>2</td>
-                  <td>Hp</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
-               <tr>
-                  <td>3</td>
-                  <td>Intel</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
-               <tr>
-                  <td>4</td>
-                  <td>Logitech</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
-               <tr>
-                  <td>5</td>
-                  <td>Red Dragon</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
+               <?php foreach ($proveedores as $proveedor) : ?>
+                  <tr>
+                     <td><?php echo $proveedor['id']; ?></td>
+                     <td><?php echo $proveedor['nombre']; ?></td>
+                     <td><?php echo $proveedor['direccion']; ?></td>
+                     <td><?php echo $proveedor['email']; ?></td>
+                     <td class="action-cell" style="display:flex; justify-content: center">
+                        <div style="width: 50px; " class="mr-1">
+                           <!-- Botón para eliminar con color rojo -->
+                           <button class="btn btn-danger" onclick="openModal()">
+                              <i class="fas fa-trash-alt"></i>
+                           </button>
+                        </div>
+                        <!-- Botón para editar con color gris -->
+                        <div style="width: 50px;">
+                           <button class="btn btn-secondary">
+                              <i class="fas fa-edit"></i>
+                           </button>
+                        </div>
+                     </td>
+                  </tr>
+               <?php endforeach; ?>
             </table>
             <div class="pagination">
                <a href="#">&laquo;</a>

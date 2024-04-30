@@ -8,26 +8,22 @@
 .left-column {
   width: 200px; /* Ancho del Sidebar */
   background-color: #faf8f9;
-  border: 1px solid #000;
 }
 
 .right-column {
   flex: 1; /* El contenido ocupará el espacio restante */
   padding: 20px;
   background-color: #f0f8ff;
-  border: 1px solid #000;
 }
 
 .logo img {
   width: 200px;
   margin-bottom: 20px;
-  border: 1px solid #000;
 }
 
 .menu {
   list-style-type: none;
-  padding: 0;
-  border: 1px solid #000;
+  padding-left: 15px;
 }
 
 .menu li {
@@ -54,7 +50,6 @@
 
 .content {
   margin-top: 20px;
-  border: 1px solid #000;
 }
 
 .content table {

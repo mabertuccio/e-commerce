@@ -1,10 +1,15 @@
 <?php
+include '../../controllers/bbdd.php';
 session_start();
-if (!isset($_SESSION["username"])) {
-   header("Location: login.php");
+if (!isset($_SESSION["usuario"])) {
+   header("Location: ../../index.html");
    exit;
 }
-$usuario = $_SESSION["username"];
+$usuario = $_SESSION["usuario"];
+
+$sql = "SELECT * FROM productos WHERE estado=true";
+$stmt = $conn->query($sql);
+$productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -37,83 +42,39 @@ $usuario = $_SESSION["username"];
             </div>
             <hr>
             <table>
+
                <tr>
                   <th class="title-table">Id</th>
                   <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
                   <th class="table-action">Acciones</th>
                </tr>
-               <tr>
-                  <td>1</td>
-                  <td>Teclado</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
-               <tr>
-                  <td>2</td>
-                  <td>Mouse</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
-               <tr>
-                  <td>3</td>
-                  <td>Monitor</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
-               <tr>
-                  <td>4</td>
-                  <td>Pad</td>
-                  <td class="action-cell" style="display:flex; justify-content: center">
-                     <div style="width: 50px; " class="mr-1">
-                        <!-- Botón para eliminar con color rojo -->
-                        <button class="btn btn-danger">
-                           <i class="fas fa-trash-alt"></i>
-                        </button>
-                     </div>
-                     <!-- Botón para editar con color gris -->
-                     <div style="width: 50px;">
-                        <button class="btn btn-secondary">
-                           <i class="fas fa-edit"></i>
-                        </button>
-                     </div>
-                  </td>
-               </tr>
+               <?php foreach ($productos as $producto) : ?>
+                  <tr>
+                     <td><?php echo $producto['id']; ?></td>
+                     <td><?php echo $producto['nombre']; ?></td>
+                     <td><?php echo $producto['descripcion']; ?></td>
+                     <td><?php echo $producto['precio']; ?></td>
+                     <td><?php echo $producto['cantidad']; ?></td>
+                     <td class="action-cell" style="display:flex; justify-content: center">
+                        <div style="width: 50px; " class="mr-1">
+                           <!-- Botón para eliminar con color rojo -->
+                           <button class="btn btn-danger" onclick="openModal()">
+                              <i class="fas fa-trash-alt"></i>
+                           </button>
+                        </div>
+                        <!-- Botón para editar con color gris -->
+                        <div style="width: 50px;">
+                           <button class="btn btn-secondary">
+                              <i class="fas fa-edit"></i>
+                           </button>
+                        </div>
+                     </td>
+                  </tr>
+               <?php endforeach; ?>
+
             </table>
             <div class="pagination">
                <a href="#">&laquo;</a>

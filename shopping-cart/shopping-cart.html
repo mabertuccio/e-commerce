@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="shopping-cart.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sub-header">
+      <h2>SHOPPING CART</h2>
+
+      <svg
+        data-slot="icon"
+        aria-hidden="true"
+        fill="none"
+        stroke-width="1.5"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+    </div>
+
+    <main>
+      <div class="container">
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="./img.jpg" /></td>
+              <td>Product</td>
+              <td>$50</td>
+              <td>
+                <input type="number" class="quantity-input" value="1" min="1" />
+              </td>
+              <td>
+                <button class="delete-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21c0 1.1.89 2 1.99 2H17c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 2h2v10H9V5zm4 0h2v10h-2V5z"
+                    />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="./img.jpg" /></td>
+              <td>Product</td>
+              <td>$50</td>
+              <td>
+                <input type="number" class="quantity-input" value="1" min="1" />
+              </td>
+              <td>
+                <button class="delete-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21c0 1.1.89 2 1.99 2H17c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 2h2v10H9V5zm4 0h2v10h-2V5z"
+                    />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span>$110</span>
+        </div>
+        <div class="summary-row">
+          <span>Taxes:</span>
+          <span>$10</span>
+        </div>
+        <div class="summary-row">
+          <span>Total:</span>
+          <span>$120</span>
+        </div>
+        <a href="checkout.html" target="_blank">
+          <button>GO TO CHECKOUT</button>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

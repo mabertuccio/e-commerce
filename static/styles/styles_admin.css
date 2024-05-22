@@ -169,16 +169,44 @@ tr:nth-child(even) {
   font-weight: bold;
 }
 
-.input-group-from-admin input {
+.input-group-from-admin input,
+.input-group-from-admin select,
+.input-group-from-admin textarea {
   padding: 10px;
+  font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: calc(100% - 20px);
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
 }
-.input-group-from-admin textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.input-group-from-admin select option {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  background-color: #fff;
+  padding: 5px 10px;
+}
+
+.input-group-from-admin select option:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+}
+
+.input-group-from-admin select option:checked {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Estilo al seleccionar */
+.input-group-from-admin select option:checked {
+  background-color: #007bff; /* Cambia el color de fondo cuando se selecciona */
+  color: white; /* Cambia el color del texto cuando se selecciona */
+}
+
+/* Botones formulario*/
+.btn-form {
   width: calc(100% - 20px);
 }
 /* MARGENES */

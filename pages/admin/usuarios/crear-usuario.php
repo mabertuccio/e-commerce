@@ -10,20 +10,8 @@
 
 <body>
     <div class="container-form">
-        <form action="procesar_formulario.php" method="post">
-            <h2>Registrar Usuario</h2>
-            <div class="input-group-from-admin">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
-            <div class="input-group-from-admin">
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" required>
-            </div>
-            <div class="input-group-from-admin">
-                <label for="username">Nombre de Usuario:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
+        <form action="../../../controllers/admin/crear_usuario.php" method="post">
+            <h2 class="mb-2">Registrar Usuario</h2>
             <div class="input-group-from-admin">
                 <label for="email">Correo Electrónico:</label>
                 <input type="email" id="email" name="email" required>
@@ -32,13 +20,19 @@
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <div class="input-group-from-admin">
+                <label for="tipo_usuario">Tipo de Usuario:</label>
+                <select name="tipo_usuario" id="tipo_usuario" required>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Vendedor">Vendedor</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-form">Guardar</button>
             <div>
-                <button class=" btn btn-secondary mt-2" onclick="window.location.href='../usuarios.php'">Volver</button>
+                <button class=" btn btn-secondary mt-2 btn-form" onclick="window.location.href='../usuarios.php'">Volver</button>
             </div>
         </form>
     </div>
-
 </body>
 
 </html>

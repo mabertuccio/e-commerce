@@ -2,12 +2,12 @@
     <div class="modal-content"><span class="close" onclick="closeModal()">&times;
         </span>
         <div class="modal-content-open">
-            <h3>Desea eliminar el usuario</h3>
+            <h4 id="modal-text" class="mb-2"></h4>
             <div style="display:flex; justify-content: center">
                 <div style="width: 100px;" class="mr-1">
-                    <button class="btn btn-danger">Eliminar</button>
+                    <button class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
                 </div>
-                <div style="width: 100px;" class="mr-1">
+                <div style=" width: 100px;" class="mr-1">
                     <button class="btn btn-secondary" onclick="closeModal()"> Cancelar</button>
                 </div>
             </div>

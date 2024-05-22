@@ -35,16 +35,17 @@ El proyecto se organizará en base al patrón de diseño Modelo-Vista-Controlado
 - **Vista:** Será responsable de la presentación de la interfaz de usuario.
 - **Controlador:** Actuará como intermediario entre el modelo y la vista, gestionando las solicitudes del usuario y coordinando las acciones correspondientes.
 
-
 ## Base de datos
+
 ```
 -- Tabla de usuarios
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user VARCHAR(50) NOT NULL,
-    pass VARCHAR(100) NOT NULL,
-    type_varchar VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    tipo_usuario VARCHAR(50) NOT NULL,
+    estado TINYINT NOT NULL DEFAULT 1, -- 1 para activo, 0 para inactivo
+    CHECK (tipo_usuario IN ('Cliente', 'Vendedor'))
 );
 
 -- Tabla de proveedores
@@ -52,7 +53,8 @@ CREATE TABLE proveedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     direccion VARCHAR(255),
-    email VARCHAR(100)
+    email VARCHAR(100),
+    estado TINYINT NOT NULL DEFAULT 1, -- 1 para activo, 0 para inactivo
 );
 
 -- Tabla de productos
@@ -103,15 +105,15 @@ CREATE TABLE items_factura (
 
 -- Generación de datos aleatorios
 INSERT INTO usuarios (user, pass, type_varchar, email)
-VALUES 
-    ('usuario1', 'password1', 'Cliente', 'usuario1@example.com'),
-    ('usuario2', 'password2', 'Cliente', 'usuario2@example.com'),
-    ('usuario3', 'password3', 'Vendedor', 'usuario3@example.com'),
-    ('usuario4', 'password4', 'Cliente', 'usuario4@example.com'),
-    ('usuario5', 'password5', 'Vendedor', 'usuario5@example.com');
+VALUES
+    ('usuario1@example.com', 1, 'Vendedor'),
+    ('usuario2@example.com', 2, 'Cliente'),
+    ('usuario3@example.com', 3, 'Vendedor'),
+    ('usuario4@example.com', 4, 'Cliente'),
+    ('usuario5@example.com',5 ,'Vendedor');
 
 INSERT INTO proveedores (nombre, direccion, email)
-VALUES 
+VALUES
     ('Proveedor 1', 'Dirección del Proveedor 1', 'proveedor1@example.com'),
     ('Proveedor 2', 'Dirección del Proveedor 2', 'proveedor2@example.com'),
     ('Proveedor 3', 'Dirección del Proveedor 3', 'proveedor3@example.com'),
@@ -119,7 +121,7 @@ VALUES
     ('Proveedor 5', 'Dirección del Proveedor 5', 'proveedor5@example.com');
 
 INSERT INTO productos (nombre, descripcion, imagen, precio, cantidad, estado, id_proveedor)
-VALUES 
+VALUES
     ('Producto 1', 'Descripción del producto 1', 'imagen1.jpg', 10.99, 100, 1, 1),
     ('Producto 2', 'Descripción del producto 2', 'imagen2.jpg', 20.49, 50, 1, 2),
     ('Producto 3', 'Descripción del producto 3', 'imagen3.jpg', 15.75, 75, 1, 3),
@@ -127,14 +129,14 @@ VALUES
     ('Producto 5', 'Descripción del producto 5', 'imagen5.jpg', 30.00, 25, 1, 5);
 
 INSERT INTO pagos (tipo, numero_tarjeta, fecha_vencimiento, cvv)
-VALUES 
+VALUES
     ('Tarjeta de Crédito', '1234567812345678', '2026-04-01', '123'),
     ('Tarjeta de Crédito', '9876543298765432', '2025-05-01', '456'),
     ('Tarjeta de Débito', '1111222233334444', '2025-06-01', '789'),
     ('PayPal', 'paypal@example.com', '2025-07-01', '321'),
     ('Transferencia Bancaria', 'Banco X, Cuenta Y', '2025-08-01', '654');
 INSERT INTO facturas (fecha, id_usuario, precio_total, id_pago)
-VALUES 
+VALUES
     ('2024-04-23', 1, 100.00, 1),
     ('2024-04-23', 2, 75.50, 2),
     ('2024-04-23', 3, 200.25, 3),
@@ -142,13 +144,13 @@ VALUES
     ('2024-04-23', 5, 300.00, 5);
 
 INSERT INTO items_factura (id_factura, id_producto, cantidad, precio_unitario)
-VALUES 
+VALUES
     (1, 1, 2, 10.99),
     (1, 2, 1, 20.49),
     (2, 3, 3, 15.75),
     (3, 4, 10, 5.25),
     (4, 5, 1, 30.00);
-``` 
+```
 
 ## Conclusiones
 

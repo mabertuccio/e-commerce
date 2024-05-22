@@ -1,54 +1,65 @@
+<?php
+include '../../../controllers/bbdd.php';
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+if ($id) {
+
+    try {
+        $stmt = $conn->prepare("SELECT * FROM productos WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $producto = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Error al recuperar los datos del producto: " . $e->getMessage();
+    }
+} else {
+    echo "ID de producto no proporcionado.";
+    exit;
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modificar Producto</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Proveedor</title>
+    <link rel="stylesheet" type="text/css" href="../../../static/styles/styles_admin.css">
 </head>
+
 <body>
-<div class="container mx-auto my-3">
-  <div class="col-8">
-    <form id="productForm" class="needs-validation" novalidate>
-      <div>
-        <div class="d-flex justify-content-center" style="height: 230px">
-          <!-- Avatar component goes here -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 mb-3">
-          <label for="name">Nombre del producto</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required minlength="3" maxlength="18">
-          <div class="valid-feedback">Válido!</div>
-          <div class="invalid-feedback">Debe ingresar un nombre válido!</div>
-        </div>
-        <div class="col-md-12 mb-3">
-          <label for="tradeMark">Marca</label>
-          <input type="text" class="form-control" id="tradeMark" name="tradeMark" placeholder="Marca" required minlength="4">
-          <div class="valid-feedback">Válido!</div>
-          <div class="invalid-feedback">Debe ingresar una marca!</div>
-        </div>
-        <div class="col-md-12 mb-3">
-          <label for="description">Descripción</label>
-          <textarea class="form-control" id="description" name="description" rows="4" placeholder="Descripción del producto"></textarea>
-        </div>
-        <div class="col-md-12 mb-3">
-          <label for="qty">Stock</label>
-          <input type="text" class="form-control" id="qty" name="qty" placeholder="Stock" required pattern="[0-9]*">
-          <div class="valid-feedback">Válido!</div>
-          <div class="invalid-feedback">Debe ingresar una cantidad válida!</div>
-        </div>
-        <div class="col-md-12 mb-3">
-          <label for="price">Precio</label>
-          <input type="number" class="form-control" id="price" name="price" placeholder="Precio" required min="0.01" step="0.01">
-          <div class="valid-feedback">Válido!</div>
-          <div class="invalid-feedback">Debe ingresar un precio válido!</div>
-        </div>
-      </div>
-      <button type="submit">Registrar</button>
-    </form>
-  </div>
-</div>
-<script src="script.js"></script>
+    <div class="container-form">
+        <form id="modificarProductoForm" action="../../../controllers/admin/modificar_producto.php" method="post">
+            <h2>Modificar Producto</h2>
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+            <div class="input-group-from-admin">
+                <label for="nombre">Nombre del producto:</label>
+                <input type="text" id="nombre" required value="<?php echo htmlspecialchars($producto['nombre']); ?>">
+            </div>
+            <div class="input-group-from-admin">
+                <label for="nombre">Marca:</label>
+                <input type="text" id="marca" required value="<?php echo htmlspecialchars($producto['marca']); ?>">
+            </div>
+            <div class="input-group-from-admin">
+                <label for="description">Descripción:</label>
+                <textarea id="descripcion" rows="4" placeholder="Descripción del producto" value="<?php echo htmlspecialchars($producto['descripcion']); ?>"></textarea>></textarea>
+            </div>
+            <div class="input-group-from-admin">
+                <label for="qty">Stock:</label>
+                <input type="text" id="stock" placeholder="Stock" required pattern="[0-9]*" value="<?php echo htmlspecialchars($producto['cantidad']); ?>">>
+            </div>
+            <div class="input-group-from-admin">
+                <label for="price">Precio:</label>
+                <input type="number" id="precio" placeholder="Precio" required min="0.01" step="0.01" value="<?php echo htmlspecialchars($producto['precio']); ?>">>
+            </div>
+            <button type="submit" class="btn btn-primary btn-form">Guardar</button>
+            <div>
+                <button type="button" class="btn btn-secondary mt-2 btn-form" id="volverBtn">Volver</button>
+            </div>
+        </form>
+    </div>
+
 </body>
+<script src="../../../static/js/prodcutos.js"></script>
+
 </html>

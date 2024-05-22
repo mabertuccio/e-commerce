@@ -5,26 +5,26 @@ $error_message = ""; // Inicializar la variable de mensaje de error
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si se enviaron los campos del formulario
-    if (isset($_POST["userEmail"]) && isset($_POST["userPassword"])) {
-        $username = $_POST["userEmail"];
-        $password = $_POST["userPassword"];
+    if (isset($_POST["email"]) && isset($_POST["password"])) {
+        $useremail = $_POST["email"];
+        $password = $_POST["password"];
 
-        $stmt = $conn->prepare("SELECT user, pass, tipo_usuario FROM usuarios WHERE user = ?");
-        $stmt->execute([$username]);
+        $stmt = $conn->prepare("SELECT email, password, tipo_usuario FROM usuarios WHERE email = ?");
+        $stmt->execute([$useremail]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
             // Verificar la contraseña
-            if ($password == $user['pass']) {
+            if ($password == $user['password']) {
                 if ($user['tipo_usuario'] == 'Cliente') {
                     session_start();
-                    $_SESSION["usuario"] = $user['user'];
+                    $_SESSION["usuario"] = $user['email'];
                     $_SESSION['authenticated'] = true;
                     header("Location: ../index.html");
                     exit; // Salir del script después de la redirección
                 } elseif ($user['tipo_usuario'] == 'Vendedor') {
                     session_start();
-                    $_SESSION["usuario"] = $user['user'];
+                    $_SESSION["usuario"] = $user['email'];
                     $_SESSION['authenticated'] = true;
                     header("Location: ../pages/admin/usuarios.php");
                     exit; // Salir del script después de la redirección

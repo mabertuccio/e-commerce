@@ -12,24 +12,28 @@
 <body>
 
     <div class="container-form">
-        <form action="procesar_formulario.php" method="post">
+        <form action="../../../controllers/admin/crear_proveedor.php" method="post">
             <h2>Registrar proveedor</h2>
             <div class="input-group-from-admin">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input type="text" id="nombre" required>
             </div>
             <div class="input-group-from-admin">
                 <label for="direccion">Direccion:</label>
-                <input type="text" id="direccion" name="direccion" required>
+                <input type="text" id="direccion" required>
             </div>
-
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <!-- <div class="input-group-from-admin">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div> -->
+            <button type="submit" class="btn btn-primary btn-form">Guardar</button>
             <div>
-                <button class=" btn btn-secondary mt-2" onclick="window.location.href='../productos.php'">Volver</button>
+                <button class=" btn btn-secondary mt-2 btn-form" id="volverBtn">Volver</button>
             </div>
         </form>
     </div>
 
 </body>
+<script src="../../../static/js/proveedores.js"></script>
 
 </html>

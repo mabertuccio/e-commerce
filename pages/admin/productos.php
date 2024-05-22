@@ -26,6 +26,7 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="../../static/styles/styles_admin.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <script src="../../static/js/modal.js"></script>
 </head>
 
 
@@ -61,34 +62,27 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                      <td class="action-cell" style="display:flex; justify-content: center">
                         <div style="width: 50px; " class="mr-1">
                            <!-- Botón para eliminar con color rojo -->
-                           <button class="btn btn-danger" onclick="openModal()">
+                           <button class="btn btn-danger" onclick="openModal(<?php echo $producto['id']; ?>, '<?php echo $producto['nombre']; ?>')">
                               <i class="fas fa-trash-alt"></i>
                            </button>
                         </div>
                         <!-- Botón para editar con color gris -->
                         <div style="width: 50px;">
-                           <button class="btn btn-secondary">
+                           <button class="btn btn-secondary modificarProductoBtn" data-id="<?php echo $producto['id']; ?>">
                               <i class="fas fa-edit"></i>
                            </button>
                         </div>
                      </td>
                   </tr>
                <?php endforeach; ?>
-
             </table>
-            <div class="pagination">
-               <a href="#">&laquo;</a>
-               <a href="#" class="active">1</a>
-               <a href="#">2</a>
-               <a href="#">3</a>
-               <a href="#">4</a>
-               <a href="#">5</a>
-               <a href="#">&raquo;</a>
-            </div>
          </div>
       </div>
 
    </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../../static/js/productos.js"></script>
+<script src="../../static/js/modal.js"></script>
 
 </html>

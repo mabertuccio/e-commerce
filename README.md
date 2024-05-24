@@ -61,7 +61,7 @@ CREATE TABLE proveedores (
 CREATE TABLE proveedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    direccion VARCHAR(255),    
+    direccion VARCHAR(255),
     estado TINYINT NOT NULL DEFAULT 1 -- 1 para activo, 0 para inactivo
 );
 -- Tabla de productos
@@ -83,7 +83,8 @@ CREATE TABLE pagos (
     tipo VARCHAR(50) NOT NULL,
     numero_tarjeta VARCHAR(16) NOT NULL,
     fecha_vencimiento DATE NOT NULL,
-    cvv VARCHAR(4) NOT NULL
+    DNI VARCHAR(50) NOT NULL,
+    nombre_en_tarjeta VARCHAR(50) NOT NULL
 );
 
 -- Tabla de facturas

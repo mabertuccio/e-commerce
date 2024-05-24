@@ -7,7 +7,7 @@ function openModal(id, nombre, path) {
     .off('click')
     .one('click', function () {
       if (id) {
-        $.post(path, { id: id }, function (response) {
+        $.post(path, { id: id }, function (response) {  
           if (response === 'success') {
             location.reload();
           } else {

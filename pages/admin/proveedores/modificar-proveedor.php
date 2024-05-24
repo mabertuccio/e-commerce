@@ -37,11 +37,11 @@ if ($id) {
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
             <div class="input-group-from-admin">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" required value="<?php echo htmlspecialchars($proveedor['nombre']); ?>">
+                <input type="text" id="nombre" name="nombre" required value="<?php echo htmlspecialchars($proveedor['nombre']); ?>">
             </div>
             <div class="input-group-from-admin">
                 <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" required value="<?php echo htmlspecialchars($proveedor['direccion']); ?>">
+                <input type="text" id="direccion" name="direccion" required value="<?php echo htmlspecialchars($proveedor['direccion']); ?>">
             </div>
             <button type="submit" class="btn btn-primary btn-form">Guardar</button>
             <div>

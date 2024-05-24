@@ -1,15 +1,12 @@
 <?php
-echo "<h1>Eliminar usuario</h1>";
-/* // Verificar si la solicitud es POST
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Obtener el ID del usuario desde los datos POST
-    $id = isset($_POST['id']) ? $_POST['id'] : null;
+include '../bbdd.php';
 
-    // Verificar que el ID no esté vacío
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $id = isset($_POST['id']) ? $_POST['id'] : null;
     if ($id !== null) {
         try {
-            $stmt = $conn->prepare("UPDATE usuarios SET estado = 0 WHERE id = :id");
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare("UPDATE productos SET estado = 0 WHERE id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
             if ($stmt->execute()) {
@@ -22,9 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo 'Error al ejecutar la consulta: ' . $e->getMessage();
         }
     } else {
-        echo 'ID de usuario no válido';
+        echo 'ID de producto no válido';
     }
 } else {
     echo 'error';
 }
- */

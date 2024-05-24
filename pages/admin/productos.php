@@ -7,7 +7,7 @@ if (!isset($_SESSION["usuario"])) {
 }
 $usuario = $_SESSION["usuario"];
 
-$sql = "SELECT * FROM productos WHERE estado=true";
+$sql = "SELECT p.id, p.nombre, p.descripcion,p.precio,p.cantidad,p1.nombre as proveedor_nombre FROM `productos` as p  INNER JOIN proveedores as p1 ON p.id_proveedor=p1.id WHERE p.estado=1 AND p1.estado=1;";
 $stmt = $conn->query($sql);
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -33,6 +33,7 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
    <div class="container">
       <?php include 'components/menu_side_bar.html'; ?>
+      <?php include 'components/modal.html'; ?>
       <div class="right-column">
          <div class="content">
             <div class="header-content">
@@ -50,6 +51,7 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   <th>Descripción</th>
                   <th>Precio</th>
                   <th>Cantidad</th>
+                  <th>Proveedor</th>
                   <th class="table-action">Acciones</th>
                </tr>
                <?php foreach ($productos as $producto) : ?>
@@ -59,10 +61,11 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                      <td><?php echo $producto['descripcion']; ?></td>
                      <td><?php echo $producto['precio']; ?></td>
                      <td><?php echo $producto['cantidad']; ?></td>
+                     <td><?php echo $producto['proveedor_nombre']; ?></td>
                      <td class="action-cell" style="display:flex; justify-content: center">
                         <div style="width: 50px; " class="mr-1">
                            <!-- Botón para eliminar con color rojo -->
-                           <button class="btn btn-danger" onclick="openModal(<?php echo $producto['id']; ?>, '<?php echo $producto['nombre']; ?>')">
+                           <button class="btn btn-danger" onclick="openModal(<?php echo $producto['id']; ?>, '<?php echo $producto['nombre']; ?>', '../../controllers/admin/eliminar_producto.php')">
                               <i class="fas fa-trash-alt"></i>
                            </button>
                         </div>

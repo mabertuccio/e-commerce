@@ -54,9 +54,16 @@ CREATE TABLE proveedores (
     nombre VARCHAR(100) NOT NULL,
     direccion VARCHAR(255),
     email VARCHAR(100),
-    estado TINYINT NOT NULL DEFAULT 1, -- 1 para activo, 0 para inactivo
+    estado TINYINT NOT NULL DEFAULT 1 -- 1 para activo, 0 para inactivo
 );
 
+-- Tabla de proveedores
+CREATE TABLE proveedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    direccion VARCHAR(255),    
+    estado TINYINT NOT NULL DEFAULT 1 -- 1 para activo, 0 para inactivo
+);
 -- Tabla de productos
 CREATE TABLE productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -120,13 +127,21 @@ VALUES
     ('Proveedor 4', 'Dirección del Proveedor 4', 'proveedor4@example.com'),
     ('Proveedor 5', 'Dirección del Proveedor 5', 'proveedor5@example.com');
 
+INSERT INTO proveedores (nombre, direccion)
+VALUES
+    ('Proveedor 1', 'Dirección del Proveedor 1' ),
+    ('Proveedor 2', 'Dirección del Proveedor 2' ),
+    ('Proveedor 3', 'Dirección del Proveedor 3' ),
+    ('Proveedor 4', 'Dirección del Proveedor 4' ),
+    ('Proveedor 5', 'Dirección del Proveedor 5');
+
 INSERT INTO productos (nombre, descripcion, imagen, precio, cantidad, estado, id_proveedor)
 VALUES
-    ('Producto 1', 'Descripción del producto 1', 'imagen1.jpg', 10.99, 100, 1, 1),
-    ('Producto 2', 'Descripción del producto 2', 'imagen2.jpg', 20.49, 50, 1, 2),
-    ('Producto 3', 'Descripción del producto 3', 'imagen3.jpg', 15.75, 75, 1, 3),
-    ('Producto 4', 'Descripción del producto 4', 'imagen4.jpg', 5.25, 200, 1, 4),
-    ('Producto 5', 'Descripción del producto 5', 'imagen5.jpg', 30.00, 25, 1, 5);
+    ('Producto 1', 'Descripción del producto 1', 'imagen.jpg', 10.99, 100, 1, 1),
+    ('Producto 2', 'Descripción del producto 2', 'imagen.jpg', 20.49, 50, 1, 2),
+    ('Producto 3', 'Descripción del producto 3', 'imagen.jpg', 15.75, 75, 1, 3),
+    ('Producto 4', 'Descripción del producto 4', 'imagen.jpg', 5.25, 200, 1, 4),
+    ('Producto 5', 'Descripción del producto 5', 'imagen.jpg', 30.00, 25, 1, 5);
 
 INSERT INTO pagos (tipo, numero_tarjeta, fecha_vencimiento, cvv)
 VALUES

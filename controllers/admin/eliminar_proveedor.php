@@ -2,18 +2,13 @@
 include '../bbdd.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Obtener el ID del usuario desde los datos POST
-    $id = isset($_POST['id']) ? $_POST['id'] : null;
 
-    // Verificar que el ID no esté vacío
+    $id = isset($_POST['id']) ? $_POST['id'] : null;
     if ($id !== null) {
         try {
-            // Preparar la consulta SQL para eliminar el usuario
-            $sql = "DELETE FROM proveedores WHERE id = :id";
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare("UPDATE proveedores SET estado = 0 WHERE id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
-            // Ejecutar la consulta y comprobar si fue exitosa
             if ($stmt->execute()) {
                 echo 'success';
             } else {

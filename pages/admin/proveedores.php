@@ -7,7 +7,7 @@ if (!isset($_SESSION["usuario"])) {
 }
 $usuario = $_SESSION["usuario"];
 
-$sql = "SELECT * FROM proveedores";
+$sql = "SELECT * FROM proveedores WHERE estado!=0";
 $stmt = $conn->query($sql);
 $proveedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -49,7 +49,7 @@ $proveedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   <th class="title-table">Id</th>
                   <th>Nombre</th>
                   <th>Dirección</th>
-                  <th>Email</th>
+                  <!-- <th>Email</th> -->
                   <th class="table-action">Acciones</th>
 
                </tr>
@@ -58,7 +58,7 @@ $proveedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
                      <td><?php echo $proveedor['id']; ?></td>
                      <td><?php echo $proveedor['nombre']; ?></td>
                      <td><?php echo $proveedor['direccion']; ?></td>
-                     <td><?php echo $proveedor['email']; ?></td>
+                     <!-- <td><?php echo $proveedor['email']; ?></td> -->
                      <td class="action-cell" style="display:flex; justify-content: center">
                         <div style="width: 50px; " class="mr-1">
                            <!-- Botón para eliminar con color rojo -->

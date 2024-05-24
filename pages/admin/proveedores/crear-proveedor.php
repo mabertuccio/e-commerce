@@ -6,21 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Proveedor</title>
     <link rel="stylesheet" type="text/css" href="../../../static/styles/styles_admin.css">
-
 </head>
 
 <body>
-
     <div class="container-form">
         <form action="../../../controllers/admin/crear_proveedor.php" method="post">
             <h2>Registrar proveedor</h2>
             <div class="input-group-from-admin">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" required>
+                <input type="text" id="nombre" name="nombre" required>
             </div>
             <div class="input-group-from-admin">
                 <label for="direccion">Direccion:</label>
-                <input type="text" id="direccion" required>
+                <input type="text" id="direccion" name="direccion" required>
             </div>
             <!-- <div class="input-group-from-admin">
                 <label for="email">Correo Electrónico:</label>
@@ -32,7 +30,6 @@
             </div>
         </form>
     </div>
-
 </body>
 <script src="../../../static/js/proveedores.js"></script>
 

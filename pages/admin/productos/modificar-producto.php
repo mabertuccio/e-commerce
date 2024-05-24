@@ -15,7 +15,18 @@ if ($id) {
     echo "ID de producto no proporcionado.";
     exit;
 }
+$sql = "SELECT id, nombre FROM proveedores";
+$result = $conn->query($sql);
+if ($result && $result->rowCount() > 0) {
+    $proveedores = array();
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $proveedores[] = $row;
+    }
+} else {
+    $proveedores = array();
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -30,27 +41,33 @@ if ($id) {
 <body>
     <div class="container-form">
         <form id="modificarProductoForm" action="../../../controllers/admin/modificar_producto.php" method="post">
-            <h2>Modificar Producto</h2>
+            <h2 class="mb-2">Modificar Producto</h2>
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
             <div class="input-group-from-admin">
                 <label for="nombre">Nombre del producto:</label>
-                <input type="text" id="nombre" required value="<?php echo htmlspecialchars($producto['nombre']); ?>">
-            </div>
-            <div class="input-group-from-admin">
-                <label for="nombre">Marca:</label>
-                <input type="text" id="marca" required value="<?php echo htmlspecialchars($producto['marca']); ?>">
+                <input type="text" id="nombre" name="nombre" required value="<?php echo htmlspecialchars($producto['nombre']); ?>">
             </div>
             <div class="input-group-from-admin">
                 <label for="description">Descripción:</label>
-                <textarea id="descripcion" rows="4" placeholder="Descripción del producto" value="<?php echo htmlspecialchars($producto['descripcion']); ?>"></textarea>></textarea>
+                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Descripción del producto"><?php echo htmlspecialchars($producto['descripcion']); ?></textarea>
             </div>
             <div class="input-group-from-admin">
-                <label for="qty">Stock:</label>
-                <input type="text" id="stock" placeholder="Stock" required pattern="[0-9]*" value="<?php echo htmlspecialchars($producto['cantidad']); ?>">>
+                <label for="cantidad">Stock:</label>
+                <input type="text" id="cantida" name="cantidad" placeholder="Stock" required pattern="[0-9]*" value="<?php echo htmlspecialchars($producto['cantidad']); ?>">
             </div>
             <div class="input-group-from-admin">
-                <label for="price">Precio:</label>
-                <input type="number" id="precio" placeholder="Precio" required min="0.01" step="0.01" value="<?php echo htmlspecialchars($producto['precio']); ?>">>
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" placeholder="Precio" required min="0.01" step="0.01" value="<?php echo htmlspecialchars($producto['precio']); ?>">
+            </div>
+            <div class="input-group-from-admin">
+                <label for="proveedor">Proveedor:</label>
+                <select name="proveedor" id="proveedor" required>
+                    <?php foreach ($proveedores as $proveedor) : ?>
+                        <option value="<?php echo $proveedor['id']; ?>" <?php if ($proveedor['id'] == $producto['id_proveedor']) echo 'selected'; ?>>
+                            <?php echo htmlspecialchars($proveedor['nombre']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary btn-form">Guardar</button>
             <div>
@@ -60,6 +77,6 @@ if ($id) {
     </div>
 
 </body>
-<script src="../../../static/js/prodcutos.js"></script>
+<script src="../../../static/js/productos.js"></script>
 
 </html>

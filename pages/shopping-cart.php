@@ -32,6 +32,14 @@
 
                     <tbody>
                         <?php
+                        /*
+                        ------------------
+                        28/05/2024 - 16:00
+                        ------------------
+                        El código siguente se encarga de guardar por el momento los productos ficticios agregados.
+                        A su vez, hará uso de una función externa que es llamada para mostrarlos en la tabla.
+                        ------------------
+                        */
                         include "products.php";
 
                         $products = [
@@ -57,19 +65,76 @@
                 <h3>Pricing</h3>
                 <div class="summary-row">
                     <span>Subtotal</span>
-                    <span id="subtotal">$20.00</span>
+                    <span id="subtotal">
+                        <span>
+                            <?php
+                            /*
+                            ------------------
+                            28/05/2024 - 16:17
+                            ------------------
+                            Se encarga de calcular y mostrar la suma de los precios de los productos.
+                            ------------------
+                            */
+                            $subtotal = array_sum($precios);
+                            echo "$$subtotal";
+                            ?>
+                        </span>
+                    </span>
                 </div>
                 <div class="summary-row">
                     <span>Shipping</span>
-                    <span id="shipping">$5.00</span>
+                    <span id="shipping">
+                        <span>
+                            <?php
+                            /*
+                            ------------------
+                            28/05/2024 - 16:18
+                            ------------------
+                            Se encarga de declarar y mostrar el precio del envio.
+                            ------------------
+                            */
+                            $envio = 10;
+                            echo "$$envio";
+                            ?>
+                        </span>
+                    </span>
                 </div>
                 <div class="summary-row">
                     <span>Tax</span>
-                    <span id="tax">$5.00</span>
+                    <span id="tax">
+                        <span>
+                            <?php
+                            /*
+                            ------------------
+                            28/05/2024 - 16:19
+                            ------------------
+                            Se encarga de calcular y mostrar el impuesto.
+                            Se asume que el impuesto es del 21% sobre el total de los productos a comprar.
+                            ------------------
+                            */
+                            $impuesto = $subtotal * 0.21;
+                            echo "$$impuesto";
+                            ?>
+                        </span>
+                    </span>
                 </div>
                 <div class="summary-row">
                     <span>Grand Total</span>
-                    <span id="grand-total">$30.00</span>
+                    <span id="grand-total">
+                        <span>
+                            <?php
+                            /*
+                            ------------------
+                            28/05/2024 - 16:20
+                            ------------------
+                            Se encarga de calcular y mostrar el precio final de la compra de productos.
+                            ------------------
+                            */
+                            $total = $subtotal + $impuesto + $envio;
+                            echo "$$total";
+                            ?>
+                        </span>
+                    </span>
                 </div>
 
                 <hr>

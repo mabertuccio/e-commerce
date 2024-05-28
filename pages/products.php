@@ -1,6 +1,16 @@
 <?php
+/*
+------------------
+28/05/2024 - 16:21
+------------------
+El código siguiente se encarga de guardar los precios y de mostrar los productos.
+------------------
+*/
 function generateProduct($name, $price)
 {
+    global $precios;
+    $precios[] = $price;
+
     return "
     <tr>
         <td>

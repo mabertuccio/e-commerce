@@ -1,3 +1,6 @@
+<?php
+include ("../controllers/check-session-cart.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 

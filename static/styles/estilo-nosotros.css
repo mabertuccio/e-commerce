@@ -27,11 +27,6 @@ img {
   vertical-align: top;
 }
 
-/* preLoader */
-.hidden {
-  overflow: hidden;
-}
-
 .centrado {
   position: fixed;
   width: 100vw;
@@ -43,7 +38,7 @@ img {
   align-items: center;
 }
 
-header {
+.texto-inicial {
   width: 100%;
   height: 600px;
   background: linear-gradient(
@@ -52,55 +47,13 @@ header {
       rgba(50, 142, 240, 0.874),
       rgba(97, 141, 234, 0.6)
     ),
-    url(/im/fondo.jpg);
+    url(../images/login/fondo.jpg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-}
-
-nav {
-  width: 100%;
-  position: fixed;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-}
-
-.nav1 {
-  background: transparent;
-  height: 80px;
-  color: rgb(36, 41, 29);
-}
-
-.nav2 {
-  background: var(--fondo);
-  height: 100px;
-  color: #000;
-}
-
-.contenedor-nav {
-  display: flex;
-  margin: auto;
-  width: 90%;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1000px;
-  height: inherit;
-  overflow: hidden;
-}
-
-nav .enlaces a {
-  display: inline-block;
-  padding: 5px 0;
-  margin-right: 17px;
-  font-size: 17px;
-  font-weight: 300;
-  text-decoration: none;
-  border-bottom: 3px solid transparent;
-  color: inherit;
-}
-
-nav .enlaces a:hover {
-  border-bottom: 3px solid #424243;
-  transition: 0.6s;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  text-align: justify;
 }
 
 .logo,
@@ -233,7 +186,7 @@ nav .enlaces a:hover {
 /* Footer */
 
 footer {
-  background: url(/im/teclado.jpg);
+  background: url(/static/images/login/teclado.jpg);
 }
 
 .marca-logo {

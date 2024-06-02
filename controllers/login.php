@@ -16,8 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     session_start();
                     $_SESSION["usuario"] = $user['email'];
                     $_SESSION['authenticated'] = true;
-                    $_SESSION['tipo_usuario'] = $user['tipo_usuario']; // Se agrega esta línea de código para guardar el tipo de usuario en la session.
-                    header("Location: ../index.html");
+                    header("Location: ../index.php");
                     exit; // Salir del script después de la redirección
                 } elseif ($user['tipo_usuario'] == 'Vendedor') {
                     session_start();

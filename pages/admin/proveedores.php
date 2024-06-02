@@ -76,15 +76,12 @@ $proveedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   </tr>
                <?php endforeach; ?>
             </table>
-            <!--   <div class="pagination">
-               <a href="#">&laquo;</a>
-               <a href="#" class="active">1</a>
-               <a href="#">2</a>
-               <a href="#">3</a>
-               <a href="#">4</a>
-               <a href="#">5</a>
-               <a href="#">&raquo;</a>
-            </div> -->
+            <div style="width: 150px; margin: auto; margin-top: 10px;">
+               <form action="../../controllers/admin/generar_excel.php" method="get">
+                  <input type="hidden" name="datos" value="proveedores">
+                  <button class="btn btn-primary" type="submit">Descargar XLS</button>
+               </form>
+            </div>
          </div>
       </div>
 

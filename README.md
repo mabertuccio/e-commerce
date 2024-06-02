@@ -47,23 +47,22 @@ CREATE TABLE usuarios (
     estado TINYINT NOT NULL DEFAULT 1, -- 1 para activo, 0 para inactivo
     CHECK (tipo_usuario IN ('Cliente', 'Vendedor'))
 );
-
+-- Tabla de usuarios en caso de tener problemas con el check
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    tipo_usuario ENUM('Cliente', 'Vendedor') NOT NULL,
+    estado TINYINT NOT NULL DEFAULT 1
+);
 -- Tabla de proveedores
 CREATE TABLE proveedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     direccion VARCHAR(255),
-    email VARCHAR(100),
     estado TINYINT NOT NULL DEFAULT 1 -- 1 para activo, 0 para inactivo
 );
 
--- Tabla de proveedores
-CREATE TABLE proveedores (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    direccion VARCHAR(255),
-    estado TINYINT NOT NULL DEFAULT 1 -- 1 para activo, 0 para inactivo
-);
 -- Tabla de productos
 CREATE TABLE productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -80,11 +79,11 @@ CREATE TABLE productos (
 -- Tabla de pagos
 CREATE TABLE pagos (
     id_pago INT AUTO_INCREMENT PRIMARY KEY,
+    dni VARCHAR(50) NOT NULL,
+    nombre_en_tarjeta VARCHAR(50) NOT NULL
     tipo VARCHAR(50) NOT NULL,
     numero_tarjeta VARCHAR(16) NOT NULL,
     fecha_vencimiento DATE NOT NULL,
-    DNI VARCHAR(50) NOT NULL,
-    nombre_en_tarjeta VARCHAR(50) NOT NULL
 );
 
 -- Tabla de facturas
@@ -109,10 +108,8 @@ CREATE TABLE items_factura (
     FOREIGN KEY (id_producto) REFERENCES productos(id)
 );
 
-
-
 -- Generación de datos aleatorios
-INSERT INTO usuarios (user, pass, type_varchar, email)
+INSERT INTO usuarios (email, password, tipo_usuario)
 VALUES
     ('usuario1@example.com', 1, 'Vendedor'),
     ('usuario2@example.com', 2, 'Cliente'),
@@ -144,13 +141,13 @@ VALUES
     ('Producto 4', 'Descripción del producto 4', 'imagen.jpg', 5.25, 200, 1, 4),
     ('Producto 5', 'Descripción del producto 5', 'imagen.jpg', 30.00, 25, 1, 5);
 
-INSERT INTO pagos (tipo, numero_tarjeta, fecha_vencimiento, cvv)
+INSERT INTO pagos (dni, nombre_en_tarjeta, tipo, numero_tarjeta, fecha_vencimiento)
 VALUES
-    ('Tarjeta de Crédito', '1234567812345678', '2026-04-01', '123'),
-    ('Tarjeta de Crédito', '9876543298765432', '2025-05-01', '456'),
-    ('Tarjeta de Débito', '1111222233334444', '2025-06-01', '789'),
-    ('PayPal', 'paypal@example.com', '2025-07-01', '321'),
-    ('Transferencia Bancaria', 'Banco X, Cuenta Y', '2025-08-01', '654');
+    ('123456789', 'Juan Perez', 'Tarjeta de Crédito', '1234567812345678', '2026-04-01'),
+    ('987654321', 'María García', 'Tarjeta de Crédito', '9876543298765432', '2025-05-01'),
+    ('111111111', 'Pedro Rodriguez', 'Tarjeta de Débito', '1111222233334444', '2025-06-01'),
+    ('222222222', 'Ana Martínez', 'PayPal', 'paypal@example.com', '2025-07-01'),
+    ('333333333', 'Luis González', 'Transferencia Bancaria', 'Banco X, Cuenta Y', '2025-08-01');
 INSERT INTO facturas (fecha, id_usuario, precio_total, id_pago)
 VALUES
     ('2024-04-23', 1, 100.00, 1),

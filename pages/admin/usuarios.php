@@ -75,6 +75,12 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   </tr>
                <?php endforeach; ?>
             </table>
+            <div style="width: 150px; margin: auto; margin-top: 10px;">
+               <form action="../../controllers/admin/generar_excel.php" method="get">
+                  <input type="hidden" name="datos" value="usuarios">
+                  <button class="btn btn-primary" type="submit">Descargar XLS</button>
+               </form>
+            </div>
          </div>
       </div>
    </div>

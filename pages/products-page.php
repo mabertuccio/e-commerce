@@ -1,3 +1,9 @@
+<?php
+session_start();
+$variable = $_SESSION["galletita"];
+$carro = $_SESSION["carrito"];
+echo $carro;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +52,7 @@
                 <ul>
                     <li><a href="../index.php">INICIO</a></li>
                     <li><a href="">PRODUCTOS</a></li>
-                    <li><a href="">NOSOTROS</a></li>
+                    <li><a href="../pages/nosotros.html">NOSOTROS</a></li>
                     <li><a href="../pages/contactoForm.html">CONTACTO</a></li>
                 </ul>
             </nav>
@@ -54,47 +60,47 @@
     </header>
 
     <!-- Productos más vendidos -->
-    
+
     <section class="container-products">
         <h2 class="text-most-sold">NUESTROS PRODUCTOS</h2>
         <div class="container-products-cards">
 
-    <?php 
-    include '../controllers/bbdd.php';
+            <?php
+            include '../controllers/bbdd.php';
 
-    $query = "SELECT * FROM productos";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+            $query = "SELECT * FROM productos";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
 
-            <div class="product-card">
-                <div class="image-product-card">
-                    <img src="">
-                </div>
-                <div class="product-info-container">
-                    <h2 class="product-card-name">
-                        <?= $row['nombre']." ".$row['descripcion']?>
-                    </h2>
-                    <div class="pr-sb-container">
-                        <h3 class="product-card-price">
-                        <?= $row['precio']."$"?>
-                        </h3>
-                        <div class="product-card-shop-button">
-                            <a href="#">
-                                <span class="material-symbols-outlined" id="addProdButton">
-                                    add_shopping_cart
-                                </span>
-                            </a>
-                            <a href="./pages/login.html">
-                                <span class="material-symbols-outlined" id="loginButton">
-                                    login
-                                </span>
-                            </a>
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+
+                <div class="product-card">
+                    <div class="image-product-card">
+                        <img src="">
+                    </div>
+                    <div class="product-info-container">
+                        <h2 class="product-card-name">
+                            <?= $row['nombre'] . " " . $row['descripcion'] ?>
+                        </h2>
+                        <div class="pr-sb-container">
+                            <h3 class="product-card-price">
+                                <?= $row['precio'] . "$" ?>
+                            </h3>
+                            <div class="product-card-shop-button">
+                                <a href="#">
+                                    <span class="material-symbols-outlined" id="addProdButton">
+                                        add_shopping_cart
+                                    </span>
+                                </a>
+                                <a href="./pages/login.html">
+                                    <span class="material-symbols-outlined" id="loginButton">
+                                        login
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <?php endwhile; ?>
         </div>
@@ -160,12 +166,9 @@
         <div class="section-footer-2">
             <h2>SEGUINOS EN NUESTRAS REDES</h2>
             <div class="redes-sociales">
-                <a href="http://www.instagram.com/" target="_blank"><img
-                        src="../static/images/imgHome/instagram-logo.svg" alt="logo de Instagram"></a>
-                <a href="https://www.facebook.com/" target="_blank"><img src="../static/images/imgHome/facebook-logo.svg"
-                        alt="logo de Facebook"></a>
-                <a href="https://web.whatsapp.com/" target="_blank"><img src="../static/images/imgHome/whatsapp-logo.svg"
-                        alt="logo de Whatsapp"></a>
+                <a href="http://www.instagram.com/" target="_blank"><img src="../static/images/imgHome/instagram-logo.svg" alt="logo de Instagram"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img src="../static/images/imgHome/facebook-logo.svg" alt="logo de Facebook"></a>
+                <a href="https://web.whatsapp.com/" target="_blank"><img src="../static/images/imgHome/whatsapp-logo.svg" alt="logo de Whatsapp"></a>
             </div>
             <a href="./pages/contactoForm.html">
                 <h2 class="contact-footer">CONTACTO</h2>
@@ -178,7 +181,6 @@
         </div>
         <footer>
             <script>
-
                 // Funcion que formatea el correo del usuario partiendolo en el "@" y devolviendo la parte que no es el dominio.
                 function formatearNombreUsuario(correo) {
                     var partes = correo.split("@");
@@ -187,7 +189,7 @@
 
                 function ocultarBotones(listaDeBotones) {
                     listaDeBotones.forEach(element => {
-                        element.style.display='none';
+                        element.style.display = 'none';
                     });
                 }
 
@@ -202,12 +204,12 @@
                             if (data.authenticated) {
                                 // Si el usuario está autenticado, mostrar su nombre de usuario
                                 document.getElementById('nombreUsuario').innerHTML = formatearNombreUsuario(data.usuario);
-                                document.getElementById('loginButton').style.display='none';
+                                document.getElementById('loginButton').style.display = 'none';
                                 ocultarBotones(document.querySelectorAll('#loginButton'));
                             } else {
                                 // Si el usuario no está autenticado, mostrar un mensaje predeterminado
-                                document.getElementById('logoutButton').style.display='none';
-                                document.getElementById('shopButton').style.display='none';
+                                document.getElementById('logoutButton').style.display = 'none';
+                                document.getElementById('shopButton').style.display = 'none';
                                 ocultarBotones(document.querySelectorAll('#addProdButton'));
                             }
                         });

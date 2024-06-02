@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     session_start();
                     $_SESSION["usuario"] = $user['email'];
                     $_SESSION['authenticated'] = true;
-                    header("Location: ../index.html");
+                    header("Location: ../index.php");
                     exit; // Salir del script después de la redirección
                 } elseif ($user['tipo_usuario'] == 'Vendedor') {
                     session_start();

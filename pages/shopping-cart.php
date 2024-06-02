@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/table.css" />
-    <link rel="stylesheet" href="./css/summary.css" />
+    <link rel="stylesheet" href="../static/styles/main.css" />
+    <link rel="stylesheet" href="../static/styles/table.css" />
+    <link rel="stylesheet" href="../static/styles/summary.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"

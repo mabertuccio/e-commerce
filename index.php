@@ -7,8 +7,7 @@
     <title>ELECTRO SHOP</title>
     <link rel="icon" href="">
     <link rel="stylesheet" type="text/css" href="./static/styles/stylesHome.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
     </style>
@@ -18,22 +17,35 @@
     <header>
         <!-- Navbar search -->
         <div class="navbar-search">
+            <div class="navbar-search-empty">
+                <!-- Relleno para estructurar -->
+            </div>
             <div class="logo">
                 <img src="./static/images/imgHome/logo electro shop.png" alt="logo de la tienda">
             </div>
             <div class="login-register-container">
-                <span class="material-symbols-outlined">
-                    person
-                </span>
                 <span id="nombreUsuario"></span>
+                <a class="shopping-cart-button" id="shopButton" href="./pages/shopping-cart.php">
+                    <span class="material-symbols-outlined">
+                        shopping_cart
+                    </span>
+                </a>
+                <a class="logout-button" id="logoutButton" href="./controllers/logout.php">
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+                </a>
+                <a class="login-button" id="loginButton" href="./pages/login.html">
+                    INICIAR SESIÓN
+                </a>
             </div>
         </div>
         <!-- Navbar sections -->
         <div class="navbar-sections">
             <nav>
                 <ul>
-                    <li><a href="">INICIO</a></li>
-                    <li><a href="">PRODUCTOS</a></li>
+                    <li><a href="/index.php">INICIO</a></li>
+                    <li><a href="./pages/products-page.php">PRODUCTOS</a></li>
                     <li><a href="">NOSOTROS</a></li>
                     <li><a href="./pages/contactoForm.html">CONTACTO</a></li>
                 </ul>
@@ -51,68 +63,55 @@
             </ul>
         </div>
     </section>
+
     <!-- Productos más vendidos -->
+    
     <section class="container-products">
         <h2 class="text-most-sold">PRODUCTOS DESTACADOS</h2>
         <div class="container-products-cards">
+
+    <?php 
+    include '../e-commerce/controllers/bbdd.php';
+    
+    $query = "SELECT * FROM productos ORDER BY cantidad LIMIT 4";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+
             <div class="product-card">
-                <div class="image-product-card"></div>
+                <div class="image-product-card">
+                    <img src="">
+                </div>
                 <div class="product-info-container">
-                    <h2 class="product-card-name">PC GAMER i5 7400 GTX 1050ti 8GB Ram 1TB SSD</h2>
+                    <h2 class="product-card-name">
+                        <?= $row['nombre']." ".$row['descripcion']?>
+                    </h2>
                     <div class="pr-sb-container">
-                        <h3 class="product-card-price">$ 100.000</h3>
+                        <h3 class="product-card-price">
+                        <?= $row['precio']."$"?>
+                        </h3>
                         <div class="product-card-shop-button">
-                            <span class="material-symbols-outlined">
-                                add_shopping_cart
-                            </span>
+                            <a href="#">
+                                <span class="material-symbols-outlined" id="addProdButton">
+                                    add_shopping_cart
+                                </span>
+                            </a>
+                            <a href="./pages/login.html">
+                                <span class="material-symbols-outlined" id="loginButton">
+                                    login
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="image-product-card"></div>
-                <div class="product-info-container">
-                    <h2 class="product-card-name">PC GAMER i5 7400 GTX 1050ti 8GB Ram 1TB SSD</h2>
-                    <div class="pr-sb-container">
-                        <h3 class="product-card-price">$ 100.000</h3>
-                        <div class="product-card-shop-button">
-                            <span class="material-symbols-outlined">
-                                add_shopping_cart
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="image-product-card"></div>
-                <div class="product-info-container">
-                    <h2 class="product-card-name">PC GAMER i5 7400 GTX 1050ti 8GB Ram 1TB SSD</h2>
-                    <div class="pr-sb-container">
-                        <h3 class="product-card-price">$ 100.000</h3>
-                        <div class="product-card-shop-button">
-                            <span class="material-symbols-outlined">
-                                add_shopping_cart
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="image-product-card"></div>
-                <div class="product-info-container">
-                    <h2 class="product-card-name">PC GAMER i5 7400 GTX 1050ti 8GB Ram 1TB SSD</h2>
-                    <div class="pr-sb-container">
-                        <h3 class="product-card-price">$ 100.000</h3>
-                        <div class="product-card-shop-button">
-                            <span class="material-symbols-outlined">
-                                add_shopping_cart
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            <?php endwhile; ?>
         </div>
     </section>
+
+
     <!-- Slider Sponsors -->
     <section class="container-slider-sponsor">
         <div class="slide-track">
@@ -180,10 +179,8 @@
                         alt="logo de Whatsapp"></a>
             </div>
             <a href="./pages/contactoForm.html">
-                <!-- Agregar una clase para el margen -->
-                <h2 style="margin-top: -10px;">CONTACTO</h2>
+                <h2 class="contact-footer">CONTACTO</h2>
             </a>
-
         </div>
         <div class="section-footer-3">
             <h2>NUESTRO LOCAL</h2>
@@ -192,6 +189,19 @@
         </div>
         <footer>
             <script>
+
+                // Funcion que formatea el correo del usuario partiendolo en el "@" y devolviendo la parte que no es el dominio.
+                function formatearNombreUsuario(correo) {
+                    var partes = correo.split("@");
+                    return partes[0];
+                }
+
+                function ocultarBotones(listaDeBotones) {
+                    listaDeBotones.forEach(element => {
+                        element.style.display='none';
+                    });
+                }
+
                 // Función para cargar dinámicamente el nombre de usuario
                 function cargarNombreUsuario() {
                     // Realizar una petición al servidor para verificar la sesión
@@ -202,10 +212,14 @@
                             console.log(data)
                             if (data.authenticated) {
                                 // Si el usuario está autenticado, mostrar su nombre de usuario
-                                document.getElementById('nombreUsuario').innerHTML = 'Bienvenido, ' + data.usuario + ' <a href="./controllers/logout.php">Logut</a>';
+                                document.getElementById('nombreUsuario').innerHTML = formatearNombreUsuario(data.usuario);
+                                document.getElementById('loginButton').style.display='none';
+                                ocultarBotones(document.querySelectorAll('#loginButton'));
                             } else {
                                 // Si el usuario no está autenticado, mostrar un mensaje predeterminado
-                                document.getElementById('nombreUsuario').innerHTML = '<a href="./pages/login.html">Inicia sesión</a>';
+                                document.getElementById('logoutButton').style.display='none';
+                                document.getElementById('shopButton').style.display='none';
+                                ocultarBotones(document.querySelectorAll('#addProdButton'));
                             }
                         });
                 }

@@ -6,7 +6,7 @@
 body {
     font-family: 'Rubik', sans-serif;
     background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(200,224,255,1) 0%, rgba(255,255,255,1) 83%);
+    background-color:#aab0e1;
 }
 
 /* Navbar */
@@ -15,11 +15,18 @@ body {
     z-index: 10;
     height: 80px;
     padding: 20px;
-    background-image: linear-gradient(to right, black, rgb(29, 29, 29));
+    background-color:#4B5CBF;
     display: flex;
-    justify-content:space-around;
     align-items: center;
     box-sizing: border-box;
+}
+
+body header div div {
+    height: 60px;
+    width: 33.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-bar {
@@ -30,19 +37,61 @@ body {
     font-size: 20px;
 }
 
-.material-symbols-outlined {
-    cursor: pointer;
-    padding-right: 6px;
-    color: white;
-}
-
 body header div .login-register-container {
-    display: flex;
-    width: fit-content;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     font-size: 12px;
     color: white;
+}
+
+#nombreUsuario {
+    font-size: 20px;
+}
+
+.logout-button {
+    cursor:pointer;
+    width: fit-content;
+    height: fit-content;
+    background-color: #303b79;
+    margin-left: 15px;
+    padding-block: 8px;
+    padding-inline: 16px;
+    border: 2px solid white;
+    border-radius: 10%;
+    text-decoration: none;
+    color: white;
+    display: hide;
+}
+
+.shopping-cart-button {
+    cursor:pointer;
+    width: fit-content;
+    height: fit-content;
+    background-color: #303b79;
+    margin-left: 20px;
+    padding-block: 8px;
+    padding-inline: 16px;
+    border: 2px solid white;
+    border-radius: 10%;
+    text-decoration: none;
+    color: white;
+    display: hide;
+}
+
+.login-button {
+    cursor:pointer;
+    width: fit-content;
+    height: fit-content;
+    text-decoration: none;
+    color: white;
+    background-color: #303b79;
+    margin-left: 50%;
+    padding-block: 8px;
+    padding-inline: 16px;
+    border-radius: 5px;
+    border: 2px solid white;
+    font-size: 15px;
+    display: hide;
 }
 
 body header div .login-register-container h2 {
@@ -56,17 +105,18 @@ body header div .login-register-container span {
 
 .navbar-sections {
     z-index: 10;
-    height: 80px;
+    height: 40px;
     padding: 20px;
-    background-image: linear-gradient(to right, rgb(9, 103, 175), rgb(57, 148, 218));
+    background-color: #303b79;
     display: flex;
     justify-content: space-around;
     align-items: center;
     box-sizing: border-box;
+    border-top: 2px solid white;
 }
 
 header img {
-    width: 70%;
+    width: 50%;
 }
 
 header nav ul {
@@ -76,9 +126,9 @@ header nav ul {
 }
 
 header div nav ul li a {
-    color: black;
-    font-weight: bold;
-    font-size: 25px;
+    color: white;
+    font-weight:500;
+    font-size: 20px;
     margin: 50px;
 }
 
@@ -89,8 +139,9 @@ a {
 /* Slider */
 
 .container-slider {
-    height: 500px;
+    height: fit-content;
     width: 100%;
+    margin-bottom: 30px;
 }
 
 .slide {
@@ -136,6 +187,13 @@ a {
     align-items: center;
 }
 
+.container-products-cards {
+    max-width: 70%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .text-most-sold {
     font-weight: 500;
     font-size: 30px;
@@ -147,7 +205,7 @@ body section .container-products-cards {
 }
 
 .product-card {
-    background-image: linear-gradient(to right, rgb(9, 103, 175), rgb(57, 148, 218));
+    background-color: #4B5CBF;
     margin: 30px 40px;
     width: 250px;
     height: 355px;
@@ -197,9 +255,10 @@ body section .container-products-cards {
     height:30px;
     display: flex;
     text-align: center;
-    background-color: black;
+    background-color: #303b79;
     padding-left: 10px;
     padding-top: 8px;
+    border: 2px solid white;
     border-radius: 10px;
 }
 
@@ -207,13 +266,12 @@ body section .container-products-cards {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-inline: 13px;
 }
 
 
-.product-card-shop-button h3 {
-    font-size: 14px;
-    font-weight: 500;
+.product-card-shop-button span {
     color: white;
 }
 
@@ -269,7 +327,7 @@ footer {
     display: flex;
     justify-content: center;
     height: 195px;
-    background-image: linear-gradient(to top, black, rgb(29, 29, 29));
+    background-color:#303b79;
 }
 
 body footer div {
@@ -293,10 +351,13 @@ body footer div h2:first-child{
     margin-bottom: 15px;
 }
 
-body footer .section-footer-2 h2 {
-    font-weight: 500;
-    color: white;
-    margin-bottom: 5px;
+body footer .section-footer-2 a {
+    margin: 0;
+} 
+
+body footer .section-footer-2 a h2 {
+    margin: 0;
+    margin-top: 10px;
 } 
 
 body footer div div{
@@ -312,8 +373,8 @@ body footer div a img {
     height: 50px;
     margin-left: 5px;
     margin-right: 5px;
-    margin-bottom: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
+    border: 3px solid white;
 }
 
 

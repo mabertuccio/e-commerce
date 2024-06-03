@@ -10,6 +10,7 @@ include ("../controllers/check-session-cart.php");
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="../static/styles/main.css" />
     <link rel="stylesheet" href="../static/styles/table.css" />
+    <link rel="stylesheet" href="../static/styles/validations.css">
     <link rel="stylesheet" href="../static/styles/summary.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -144,21 +145,21 @@ include ("../controllers/check-session-cart.php");
                 <form action="">
                     <h3>Card Information</h3>
                     <div>
-                        <label for="card-number">Card Number:</label>
+                        <label for="card-number" id="card-label">Card Number:</label>
                         <div class="input-container">
-                            <input type="text" name="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" />
+                            <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" />
                         </div>
                     </div>
                     <div>
-                        <label for="expiration-date">Expiration Date:</label>
+                        <label for="expiration-date" id="expiration-label">Expiration Date:</label>
                         <div class="input-container">
-                            <input type="text" name="expiration-date" placeholder="MM/YY" />
+                            <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY" />
                         </div>
                     </div>
                     <div>
-                        <label for="">CVV:</label>
+                        <label for="cvv" id="cvv-label">CVV:</label>
                         <div class="input-container">
-                            <input type="text" name="cvv" placeholder="XXX" />
+                            <input type="text" id="cvv" name="cvv" placeholder="XXX" />
                         </div>
                     </div>
                     <hr>
@@ -167,6 +168,9 @@ include ("../controllers/check-session-cart.php");
             </div>
         </div>
     </div>
+    <script src="../static/js/credit-card-validation.js"></script>
+    <script src="../static/js/expiration-date-validation.js"></script>
+    <script src="../static/js/cvv-validation.js"></script>
 </body>
 
 </html>

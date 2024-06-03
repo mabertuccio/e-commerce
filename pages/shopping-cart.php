@@ -1,6 +1,5 @@
 <?php
 include("../controllers/check-session-cart.php");
-include("../controllers/product-session.php");
 include("../controllers/get-products.php");
 
 
@@ -176,6 +175,9 @@ include("../controllers/get-products.php");
                             <div class="input-container">
                                 <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY" required />
                             </div>
+                            <span class="danger-validation" id="validacion-fecha" style="display:none; color:red;">
+                                <p>Error en la fecha</p>
+                            </span>
                         </div>
                         <div>
                             <label for="cvv" id="cvv-label">CVV:</label>

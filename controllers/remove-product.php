@@ -28,6 +28,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 */
 
 // Redirige de vuelta al carrito
-header("Location: https://localhost/e-commerce/pages/shopping-cart.php");
+header("Location: ../pages/shopping-cart.php");
 exit();
-?>

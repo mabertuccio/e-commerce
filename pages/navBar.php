@@ -19,7 +19,7 @@
                     logout
                 </span>
             </a>
-            <a class="login-button" id="loginButton" href="./pages/login.html">
+            <a class="login-button" id="loginButton" href="./login.php">
                 INICIAR SESIÓN
             </a>
         </div>

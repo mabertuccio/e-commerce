@@ -1,8 +1,8 @@
-const expirationDateInput = document.getElementById("expiration-date"); // Obtiene referencia al campo de entrada para la fecha de expiración
+const expirationDateInput = document.getElementById('expiration-date'); // Obtiene referencia al campo de entrada para la fecha de expiración
 
-expirationDateInput.addEventListener("input", () => {
+expirationDateInput.addEventListener('input', () => {
   // Agrega un evento de escucha para detectar cambios en el campo de entrada
-  let value = expirationDateInput.value.replace(/\D/g, ""); // Elimina caracteres no numéricos del valor ingresado
+  let value = expirationDateInput.value.replace(/\D/g, ''); // Elimina caracteres no numéricos del valor ingresado
 
   // Limita la entrada a 4 dígitos (2 para el mes y 2 para el año)
   if (value.length > 4) {
@@ -11,7 +11,7 @@ expirationDateInput.addEventListener("input", () => {
 
   // Formatea la fecha con una barra ("/") después del mes si es necesario
   if (value.length > 2) {
-    value = value.substring(0, 2) + "/" + value.substring(2);
+    value = value.substring(0, 2) + '/' + value.substring(2);
   }
 
   expirationDateInput.value = value; // Actualiza el valor del campo de entrada con el formato deseado
@@ -19,7 +19,7 @@ expirationDateInput.addEventListener("input", () => {
   // Valida la fecha de expiración
   if (value.length === 5) {
     // Verifica si la longitud de la fecha es la adecuada
-    const [month, year] = value.split("/"); // Divide la fecha en mes y año
+    const [month, year] = value.split('/'); // Divide la fecha en mes y año
     const currentDate = new Date(); // Obtiene la fecha actual
     const currentMonth = currentDate.getMonth() + 1; // Obtiene el mes actual sumándole 1 (los meses se indexan desde 0)
     const currentYear = currentDate.getFullYear() % 100; // Obtiene los últimos 2 dígitos del año actual
@@ -36,11 +36,14 @@ expirationDateInput.addEventListener("input", () => {
         parseInt(month, 10) < currentMonth) ||
       parseInt(year, 10) < currentYear
     ) {
-      expirationDateInput.classList.add("error"); // Agrega la clase de error para resaltar el campo
+      expirationDateInput.classList.add('error'); // Agrega la clase de error para resaltar el campo
+      document.getElementById('validacion-fecha').style.display = 'block';
     } else {
-      expirationDateInput.classList.remove("error"); // Remueve la clase de error si la fecha es válida
+      expirationDateInput.classList.remove('error'); // Remueve la clase de error si la fecha es válida
+      document.getElementById('validacion-fecha').style.display = 'none';
     }
   } else {
-    expirationDateInput.classList.remove("error"); // Remueve la clase de error si la fecha ingresada no es válida
+    expirationDateInput.classList.remove('error'); // Remueve la clase de error si la fecha ingresada no es válida
+    document.getElementById('validacion-fecha').style.display = 'none';
   }
 });

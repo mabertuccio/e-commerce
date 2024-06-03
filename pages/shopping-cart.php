@@ -1,6 +1,9 @@
 <?php
 include("../controllers/check-session-cart.php");
+include("../controllers/product-session.php");
 include("../controllers/get-products.php");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,12 +55,15 @@ include("../controllers/get-products.php");
                         */
                             include "products.php";
 
+
                             // Verifica si hay productos en el carrito
                             if (!empty($products)) {
-                                // Itera sobre los productos y se muestran en la tabla
                                 foreach ($products as $product) {
-                                    echo generateProduct($product["nombre"], $product["precio"], $product["cantidad"]);
+
+                                    echo generateProduct($product["nombre"], $product["precio"], $product["cantidad"], $product["id"]);
                                 }
+                            } else {
+                                echo "<tr><td colspan='5'>Carrito vacío.</td></tr>";
                             }
                             ?>
                         </tbody>
@@ -193,6 +199,7 @@ include("../controllers/get-products.php");
     <script src="../static/js/cvv-validation.js"></script>
     <script src="../static/js/name-validation.js"></script>
     <script src="../static/js/dni-validation.js"></script>
+    <script src="../static/js/remove-product.js"></script>
 </body>
 
 </html>

@@ -49,13 +49,10 @@ include './controllers/create-product-target.php'
         <div class="navbar-sections">
             <nav>
                 <ul>
-                    <<<<<<< HEAD <li><a href="./index.php">INICIO</a></li>
-                        =======
-                        <li><a href="index.php">INICIO</a></li>
-                        >>>>>>> features/#3-pagina-home
-                        <li><a href="./pages/products-page.php">PRODUCTOS</a></li>
-                        <li><a href="./pages/nosotros.php">NOSOTROS</a></li>
-                        <li><a href="./pages/contactoForm.php">CONTACTO</a></li>
+                    <li><a href="./index.php">INICIO</a></li>
+                    <li><a href="./pages/products-page.php">PRODUCTOS</a></li>
+                    <li><a href="./pages/nosotros.php">NOSOTROS</a></li>
+                    <li><a href="./pages/contactoForm.php">CONTACTO</a></li>
                 </ul>
             </nav>
         </div>
@@ -191,6 +188,7 @@ include './controllers/create-product-target.php'
         </div>
     </footer>
     <script>
+        // Funcion que formatea el correo del usuario partiendolo en el "@" y devolviendo la parte que no es el dominio.
         function formatearNombreUsuario(correo) {
             var partes = correo.split('@');
             return partes[0];
@@ -215,7 +213,7 @@ include './controllers/create-product-target.php'
                         document.getElementById('nombreUsuario').innerHTML =
                             formatearNombreUsuario(data.usuario);
                         document.getElementById('loginButton').style.display = 'none';
-                        ocultarBotones(document.querySelectorAll('#loginButton'));
+                        ocultarBotones(document.querySelectorAll('#addProdButtonUnloged'));
                     } else {
                         // Si el usuario no está autenticado, mostrar un mensaje predeterminado
                         document.getElementById('logoutButton').style.display = 'none';

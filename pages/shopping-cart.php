@@ -1,6 +1,6 @@
 <?php
-include ("../controllers/check-session-cart.php");
-include ("../controllers/get-products.php");
+include("../controllers/check-session-cart.php");
+include("../controllers/get-products.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,29 +15,34 @@ include ("../controllers/get-products.php");
     <link rel="stylesheet" href="../static/styles/summary.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../static/styles/stylesHome.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="left-panel">
-            <h2>Shopping Cart</h2>
-            <div class="shopping-cart">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+    <?php include '../pages/navBar.php'; ?>
+    <main>
+        <div class="container">
+            <div class="left-panel">
+                <h2 style="padding:10px;">Shopping Cart</h2>
+                <div class="shopping-cart">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        <?php
-                        /*
+                        <tbody>
+                            <?php
+                            /*
                         ------------------
                         28/05/2024 - 16:00
                         ------------------
@@ -45,68 +50,68 @@ include ("../controllers/get-products.php");
                         A su vez, hará uso de una función externa que es llamada para mostrarlos en la tabla.
                         ------------------
                         */
-                        include "products.php";
+                            include "products.php";
 
-                        // Verifica si hay productos en el carrito
-                        if (!empty($products)) {
-                            // Itera sobre los productos y se muestran en la tabla
-                            foreach ($products as $product) {
-                                echo generateProduct($product["nombre"], $product["precio"], $product["cantidad"]);
+                            // Verifica si hay productos en el carrito
+                            if (!empty($products)) {
+                                // Itera sobre los productos y se muestran en la tabla
+                                foreach ($products as $product) {
+                                    echo generateProduct($product["nombre"], $product["precio"], $product["cantidad"]);
+                                }
                             }
-                        }
-                        ?>
-                    </tbody>
+                            ?>
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
+
             </div>
-
-        </div>
-        <div class="right-panel">
-            <h2>Summary</h2>
-            <div class="pricing">
-                <h3>Pricing</h3>
-                <div class="summary-row">
-                    <span>Subtotal</span>
-                    <span id="subtotal">
-                        <span>
-                            <?php
-                            /*
+            <div class="right-panel">
+                <h2 style="padding:10px;">Summary</h2>
+                <div class="pricing">
+                    <h3>Pricing</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">
+                            <span>
+                                <?php
+                                /*
                             ------------------
                             28/05/2024 - 16:17
                             ------------------
                             Se encarga de calcular y mostrar la suma de los precios de los productos.
                             ------------------
                             */
-                            $subtotal = array_sum($precios);
-                            echo "$$subtotal";
-                            ?>
+                                $subtotal = array_sum($precios);
+                                echo "$$subtotal";
+                                ?>
+                            </span>
                         </span>
-                    </span>
-                </div>
-                <div class="summary-row">
-                    <span>Shipping</span>
-                    <span id="shipping">
-                        <span>
-                            <?php
-                            /*
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="shipping">
+                            <span>
+                                <?php
+                                /*
                             ------------------
                             28/05/2024 - 16:18
                             ------------------
                             Se encarga de declarar y mostrar el precio del envio.
                             ------------------
                             */
-                            $envio = 10;
-                            echo "$$envio";
-                            ?>
+                                $envio = 10;
+                                echo "$$envio";
+                                ?>
+                            </span>
                         </span>
-                    </span>
-                </div>
-                <div class="summary-row">
-                    <span>Tax</span>
-                    <span id="tax">
-                        <span>
-                            <?php
-                            /*
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span id="tax">
+                            <span>
+                                <?php
+                                /*
                             ------------------
                             28/05/2024 - 16:19
                             ------------------
@@ -114,70 +119,75 @@ include ("../controllers/get-products.php");
                             Se asume que el impuesto es del 21% sobre el total de los productos a comprar.
                             ------------------
                             */
-                            $impuesto = $subtotal * 0.21;
-                            echo "$$impuesto";
-                            ?>
+                                $impuesto = $subtotal * 0.21;
+                                echo "$$impuesto";
+                                ?>
+                            </span>
                         </span>
-                    </span>
-                </div>
-                <div class="summary-row">
-                    <span>Grand Total</span>
-                    <span id="grand-total">
-                        <span>
-                            <?php
-                            /*
+                    </div>
+                    <div class="summary-row">
+                        <span>Grand Total</span>
+                        <span id="grand-total">
+                            <span>
+                                <?php
+                                /*
                             ------------------
                             28/05/2024 - 16:20
                             ------------------
                             Se encarga de calcular y mostrar el precio final de la compra de productos.
                             ------------------
                             */
-                            $total = $subtotal + $impuesto + $envio;
-                            echo "$$total";
-                            ?>
+                                $total = $subtotal + $impuesto + $envio;
+                                echo "$$total";
+                                ?>
+                            </span>
                         </span>
-                    </span>
-                </div>
+                    </div>
 
-                <hr>
-                <form action="">
-                    <h3>Card Information</h3>
-                    <div>
-                        <label for="name">Name:</label>
-                        <div class="input-container">
-                            <input type="text" name="name" id="name" placeholder="Example" />
-                        </div>
-                    </div>
-                    <div>
-                        <label for="dni">DNI:</label>
-                        <div class="input-container">
-                            <input type="text" name="dni" id="dni" placeholder="XXXXXXXX" />
-                        </div>
-                    </div>
-                    <div>
-                        <label for="card-number" id="card-label">Card Number:</label>
-                        <div class="input-container">
-                            <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" />
-                        </div>
-                    </div>
-                    <div>
-                        <label for="expiration-date" id="expiration-label">Expiration Date:</label>
-                        <div class="input-container">
-                            <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY" />
-                        </div>
-                    </div>
-                    <div>
-                        <label for="cvv" id="cvv-label">CVV:</label>
-                        <div class="input-container">
-                            <input type="text" id="cvv" name="cvv" placeholder="XXX" />
-                        </div>
-                    </div>
                     <hr>
-                    <button id="checkout-button">Checkout</button>
-                </form>
+                    <form action="">
+                        <h3>Card Information</h3>
+                        <div>
+                            <label for="name">Name:</label>
+                            <div class="input-container">
+                                <input type="text" name="name" id="name" placeholder="Nombre" required />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="dni">DNI:</label>
+                            <div class="input-container">
+                                <input type="text" name="dni" id="dni" placeholder="XXXXXXXX" required />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="card-number" id="card-label">Card Number:</label>
+                            <div class="input-container">
+                                <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" required />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="expiration-date" id="expiration-label">Expiration Date:</label>
+                            <div class="input-container">
+                                <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY" required />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="cvv" id="cvv-label">CVV:</label>
+                            <div class="input-container">
+                                <input type="text" id="cvv" name="cvv" placeholder="XXX" required />
+                            </div>
+                        </div>
+                        <hr>
+                        <button id="checkout-button">Checkout</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+    <?php include '../pages/footer.php'; ?>
+
+    <script src="../static/js/scriptNavBar.js"></script>
+
     <script src="../static/js/credit-card-validation.js"></script>
     <script src="../static/js/expiration-date-validation.js"></script>
     <script src="../static/js/cvv-validation.js"></script>

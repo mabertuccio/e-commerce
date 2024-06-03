@@ -14,7 +14,7 @@ function generateProduct($name, $price, $quantity)
     return "
     <tr>
         <td>
-            <img src='../static/images/img.jpg' />
+            <img class='img-table' src='../static/images/img.jpg' />
         </td>
         <td>$name</td>
         <td>

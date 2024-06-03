@@ -40,19 +40,19 @@ include '../controllers/create-product-target.php';
             'id' => $_POST['product_id'],
             'cantidad' => 1
         );
-        header("Location: products-page.php");
+        header("Location: ./products-page.php");
     }
 
-    // echo "<h2>Productos en el carrito:</h2>";
-    // if (!empty($_SESSION['carrito'])) {
-    // foreach ($_SESSION['carrito'] as $producto) {
-    //     echo "<p>El ID es: " . $producto['id'] . "</p>";
-    //     echo "<p>La cantidad es: " . $producto['cantidad'] . "</p>";
-    //     echo "<hr>";
-    // }
-    // } else {
-    //     echo "<p>No hay productos en el carrito.</p>";
-    // }
+    echo "<h2>Productos en el carrito:</h2>";
+    if (!empty($_SESSION['carrito'])) {
+        foreach ($_SESSION['carrito'] as $producto) {
+            echo "<p>El ID es: " . $producto['id'] . "</p>";
+            echo "<p>La cantidad es: " . $producto['cantidad'] . "</p>";
+            echo "<hr>";
+        }
+    } else {
+        echo "<p>No hay productos en el carrito.</p>";
+    }
 
     ?>
 

@@ -71,6 +71,7 @@
       </div>
     </form>
   </section>
+  <?php include '../pages/footer.php'; ?>
   <script>
     // Eliminar el parámetro 'status' de la URL sin recargar la página
     if (window.history.replaceState) {
@@ -79,8 +80,6 @@
       window.history.replaceState(null, null, url.toString());
     }
   </script>
-  <?php include '../pages/footer.php'; ?>
-
   <script src="../static/js/scriptNavBar.js"></script>
 </body>
 

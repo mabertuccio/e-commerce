@@ -22,7 +22,7 @@ function isUserType()
 
 if (isAuthenticated()) {
     // La sesión se establece y el usuario es autenticado.
-    echo "<h1>Tipo usuario</h1>";
+    echo "<h1>" . $_SESSION['tipo_usuario'] . "</h1>";
     $user = $_SESSION["usuario"];
 
     // Redirige según el tipo de usuario.

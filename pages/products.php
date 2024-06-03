@@ -6,7 +6,7 @@
 El código siguiente se encarga de guardar los precios y de mostrar los productos.
 ------------------
 */
-function generateProduct($name, $price)
+function generateProduct($name, $price, $quantity)
 {
     global $precios;
     $precios[] = $price;
@@ -18,7 +18,7 @@ function generateProduct($name, $price)
         </td>
         <td>$name</td>
         <td>
-            <input type='number' value='1' min='1' id='quantity' />
+            <input type='number' value='1' min='1' max='$quantity' id='quantity' />
         </td>
         <td>$$price</td>
         <td>

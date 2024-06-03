@@ -1,0 +1,14 @@
+.input-container {
+  margin-top: 10px;
+}
+.error {
+  border: 2px solid red !important;
+}
+
+.error:focus {
+  border-color: red !important;
+}
+.error-message {
+  color: red;
+  display: none;
+}

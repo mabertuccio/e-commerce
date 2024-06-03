@@ -1,3 +1,8 @@
+<?php
+session_start();
+include './controllers/create-product-target.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,10 +49,13 @@
         <div class="navbar-sections">
             <nav>
                 <ul>
-                    <li><a href="./index.php">INICIO</a></li>
-                    <li><a href="./pages/products-page.php">PRODUCTOS</a></li>
-                    <li><a href="./pages/nosotros.php">NOSOTROS</a></li>
-                    <li><a href="./pages/contactoForm.php">CONTACTO</a></li>
+                    <<<<<<< HEAD <li><a href="./index.php">INICIO</a></li>
+                        =======
+                        <li><a href="index.php">INICIO</a></li>
+                        >>>>>>> features/#3-pagina-home
+                        <li><a href="./pages/products-page.php">PRODUCTOS</a></li>
+                        <li><a href="./pages/nosotros.php">NOSOTROS</a></li>
+                        <li><a href="./pages/contactoForm.php">CONTACTO</a></li>
                 </ul>
             </nav>
         </div>
@@ -66,48 +74,46 @@
 
     <!-- Productos más vendidos -->
 
+    <?php
+
+    if (!isset($_SESSION['carrito'])) {
+        $_SESSION['carrito'] = array();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_to_cart'])) {
+        // Verificar si la sesión 'carrito' ya existe
+        if (!isset($_SESSION['carrito'])) {
+            // Si no existe, inicializarla como un array vacío
+            $_SESSION['carrito'] = array();
+        }
+        // Agregar la ID y cantidad del producto al carrito
+        $_SESSION['carrito'][] = array(
+            'id' => $_POST['product_id'],
+            'cantidad' => 1
+        );
+        header("Location: index.php");
+    }
+
+    // echo "<h2>Productos en el carrito:</h2>";
+    // if (!empty($_SESSION['carrito'])) {
+    // foreach ($_SESSION['carrito'] as $producto) {
+    //     echo "<p>El ID es: " . $producto['id'] . "</p>";
+    //     echo "<p>La cantidad es: " . $producto['cantidad'] . "</p>";
+    //     echo "<hr>";
+    // }
+    // } else {
+    //     echo "<p>No hay productos en el carrito.</p>";
+    // }
+
+    ?>
+
+    <!-- Imprimir la sesión 'carrito' para confirmar que se ha guardado -->
+
     <section class="container-products">
         <h2 class="text-most-sold">PRODUCTOS DESTACADOS</h2>
         <div class="container-products-cards">
-
-            <?php
-            include '../e-commerce/controllers/bbdd.php';
-
-            $query = "SELECT * FROM productos ORDER BY cantidad LIMIT 4";
-            $stmt = $conn->prepare($query);
-            $stmt->execute();
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
-
-                <div class="product-card">
-                    <div class="image-product-card">
-                        <img src="">
-                    </div>
-                    <div class="product-info-container">
-                        <h2 class="product-card-name">
-                            <?= $row['nombre'] . " " . $row['descripcion'] ?>
-                        </h2>
-                        <div class="pr-sb-container">
-                            <h3 class="product-card-price">
-                                <?= $row['precio'] . "$" ?>
-                            </h3>
-                            <a href="#">
-                                <span class="material-symbols-outlined" id="addProdButton">
-                                    add_shopping_cart
-                                </span>
-                            </a>
-                            <a href="./pages/login.html">
-                                <span class="material-symbols-outlined" id="loginButton">
-                                    login
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <?php crearTarjetasProductos("SELECT * FROM productos ORDER BY cantidad LIMIT 4", $conn, "pages\login.php") ?>
         </div>
-
-    <?php endwhile; ?>
-    </div>
     </section>
 
 
@@ -184,7 +190,6 @@
             <h2>+54 9 11 2933-2342</h2>
         </div>
     </footer>
-
     <script>
         function formatearNombreUsuario(correo) {
             var partes = correo.split('@');

@@ -251,15 +251,36 @@ body section .container-products-cards {
 
 .product-card-shop-button {
     cursor:pointer;
-    width: 35px;
-    height:30px;
+    width: 85px;
+    height:45px;
     display: flex;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     background-color: #303b79;
-    padding-left: 10px;
-    padding-top: 8px;
     border: 2px solid white;
     border-radius: 10px;
+}
+
+.product-card-shop-button:active{
+    background-color: #1c2347;
+}
+
+.product-card-shop-button-unloged {
+    cursor:pointer;
+    width: 85px;
+    height:45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #303b79;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+a {
+    padding: 0;
+    text-decoration: none;
 }
 
 .pr-sb-container {
@@ -272,6 +293,10 @@ body section .container-products-cards {
 
 
 .product-card-shop-button span {
+    color: white;
+}
+
+.product-card-shop-button-unloged span {
     color: white;
 }
 

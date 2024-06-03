@@ -23,7 +23,7 @@ function cargarNombreUsuario() {
         document.getElementById('nombreUsuario').innerHTML =
           formatearNombreUsuario(data.usuario);
         document.getElementById('loginButton').style.display = 'none';
-        ocultarBotones(document.querySelectorAll('#loginButton'));
+        ocultarBotones(document.querySelectorAll('#addProdButtonUnloged'));
       } else {
         // Si el usuario no está autenticado, mostrar un mensaje predeterminado
         document.getElementById('logoutButton').style.display = 'none';

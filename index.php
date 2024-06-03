@@ -44,10 +44,10 @@
         <div class="navbar-sections">
             <nav>
                 <ul>
-                    <li><a href="/index.php">INICIO</a></li>
+                    <li><a href="./index.php">INICIO</a></li>
                     <li><a href="./pages/products-page.php">PRODUCTOS</a></li>
-                    <li><a href="">NOSOTROS</a></li>
-                    <li><a href="./pages/contactoForm.html">CONTACTO</a></li>
+                    <li><a href="./pages/nosotros.php">NOSOTROS</a></li>
+                    <li><a href="./pages/contactoForm.php">CONTACTO</a></li>
                 </ul>
             </nav>
         </div>
@@ -91,24 +91,23 @@
                             <h3 class="product-card-price">
                                 <?= $row['precio'] . "$" ?>
                             </h3>
-                            <div class="product-card-shop-button">
-                                <a href="#">
-                                    <span class="material-symbols-outlined" id="addProdButton">
-                                        add_shopping_cart
-                                    </span>
-                                </a>
-                                <a href="./pages/login.php">
-                                    <span class="material-symbols-outlined" id="loginButton">
-                                        login
-                                    </span>
-                                </a>
-                            </div>
+                            <a href="#">
+                                <span class="material-symbols-outlined" id="addProdButton">
+                                    add_shopping_cart
+                                </span>
+                            </a>
+                            <a href="./pages/login.html">
+                                <span class="material-symbols-outlined" id="loginButton">
+                                    login
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
-
-            <?php endwhile; ?>
         </div>
+
+    <?php endwhile; ?>
+    </div>
     </section>
 
 
@@ -175,7 +174,7 @@
                 <a href="https://www.facebook.com/" target="_blank"><img src="./static/images/imgHome/facebook-logo.svg" alt="logo de Facebook"></a>
                 <a href="https://web.whatsapp.com/" target="_blank"><img src="./static/images/imgHome/whatsapp-logo.svg" alt="logo de Whatsapp"></a>
             </div>
-            <a href="./pages/contactoForm.html">
+            <a href="./pages/contactoForm.php">
                 <h2 class="contact-footer">CONTACTO</h2>
             </a>
         </div>
@@ -184,45 +183,46 @@
             <h2>Av. Alpes Suizos 883, CABA.</h2>
             <h2>+54 9 11 2933-2342</h2>
         </div>
-        <footer>
-            <script>
-                // Funcion que formatea el correo del usuario partiendolo en el "@" y devolviendo la parte que no es el dominio.
-                function formatearNombreUsuario(correo) {
-                    var partes = correo.split("@");
-                    return partes[0];
-                }
+    </footer>
 
-                function ocultarBotones(listaDeBotones) {
-                    listaDeBotones.forEach(element => {
-                        element.style.display = 'none';
-                    });
-                }
+    <script>
+        function formatearNombreUsuario(correo) {
+            var partes = correo.split('@');
+            return partes[0];
+        }
 
-                // Función para cargar dinámicamente el nombre de usuario
-                function cargarNombreUsuario() {
-                    // Realizar una petición al servidor para verificar la sesión
-                    fetch('./controllers/check_session.php')
-                        .then(response => response.json())
-                        .then(data => {
-                            // Verificar si el usuario está autenticado
-                            console.log(data)
-                            if (data.authenticated) {
-                                // Si el usuario está autenticado, mostrar su nombre de usuario
-                                document.getElementById('nombreUsuario').innerHTML = formatearNombreUsuario(data.usuario);
-                                document.getElementById('loginButton').style.display = 'none';
-                                ocultarBotones(document.querySelectorAll('#loginButton'));
-                            } else {
-                                // Si el usuario no está autenticado, mostrar un mensaje predeterminado
-                                document.getElementById('logoutButton').style.display = 'none';
-                                document.getElementById('shopButton').style.display = 'none';
-                                ocultarBotones(document.querySelectorAll('#addProdButton'));
-                            }
-                        });
-                }
+        function ocultarBotones(listaDeBotones) {
+            listaDeBotones.forEach((element) => {
+                element.style.display = 'none';
+            });
+        }
 
-                // Llamar a la función al cargar la página
-                window.onload = cargarNombreUsuario;
-            </script>
+        // Función para cargar dinámicamente el nombre de usuario
+        function cargarNombreUsuario() {
+            // Realizar una petición al servidor para verificar la sesión
+            fetch('./controllers/check_session.php')
+                .then((response) => response.json())
+                .then((data) => {
+                    // Verificar si el usuario está autenticado
+                    console.log(data);
+                    if (data.authenticated) {
+                        // Si el usuario está autenticado, mostrar su nombre de usuario
+                        document.getElementById('nombreUsuario').innerHTML =
+                            formatearNombreUsuario(data.usuario);
+                        document.getElementById('loginButton').style.display = 'none';
+                        ocultarBotones(document.querySelectorAll('#loginButton'));
+                    } else {
+                        // Si el usuario no está autenticado, mostrar un mensaje predeterminado
+                        document.getElementById('logoutButton').style.display = 'none';
+                        document.getElementById('shopButton').style.display = 'none';
+                        ocultarBotones(document.querySelectorAll('#addProdButton'));
+                    }
+                });
+        }
+
+        // Llamar a la función al cargar la página
+        window.onload = cargarNombreUsuario;
+    </script>
 </body>
 
 </html>

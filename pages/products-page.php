@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,44 +18,7 @@
 </head>
 
 <body>
-    <header>
-        <!-- Navbar search -->
-        <div class="navbar-search">
-            <div class="navbar-search-empty">
-                <!-- Relleno para estructurar -->
-            </div>
-            <div class="logo">
-                <img src="../static/images/imgHome/logo electro shop.png" alt="logo de la tienda">
-            </div>
-            <div class="login-register-container">
-                <span id="nombreUsuario"></span>
-                <a class="shopping-cart-button" id="shopButton" href="../pages/shopping-cart.php">
-                    <span class="material-symbols-outlined">
-                        shopping_cart
-                    </span>
-                </a>
-                <a class="logout-button" id="logoutButton" href="../controllers/logout.php">
-                    <span class="material-symbols-outlined">
-                        logout
-                    </span>
-                </a>
-                <a class="login-button" id="loginButton" href="../pages/login.php">
-                    INICIAR SESIÓN
-                </a>
-            </div>
-        </div>
-        <!-- Navbar sections -->
-        <div class="navbar-sections">
-            <nav>
-                <ul>
-                    <li><a href="../index.php">INICIO</a></li>
-                    <li><a href="">PRODUCTOS</a></li>
-                    <li><a href="">NOSOTROS</a></li>
-                    <li><a href="../pages/contactoForm.html">CONTACTO</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include '../pages/navBar.php'; ?>
 
     <!-- Productos más vendidos -->
 
@@ -86,11 +53,14 @@
                                         add_shopping_cart
                                     </span>
                                 </a>
-                                <a href="./login.php">
-                                    <span class="material-symbols-outlined" id="loginButton">
-                                        login
-                                    </span>
-                                </a>
+                                <<<<<<< HEAD <a href="./login.php">
+                                    =======
+                                    <a href="./pages/login.html">
+                                        >>>>>>> features/#12-nosotros-page
+                                        <span class="material-symbols-outlined" id="loginButton">
+                                            login
+                                        </span>
+                                    </a>
                             </div>
                         </div>
                     </div>
@@ -150,68 +120,9 @@
     </section>
 
 
-    <!-- Footer -->
-    <footer>
-        <div class="section-footer-1">
-            <h2>ATENCIÓN PRESENCIAL:</h2>
-            <h2>LUNES A SÁBADOS</h2>
-            <h2>09:00 a 18:00 HS</h2>
-        </div>
-        <div class="section-footer-2">
-            <h2>SEGUINOS EN NUESTRAS REDES</h2>
-            <div class="redes-sociales">
-                <a href="http://www.instagram.com/" target="_blank"><img src="../static/images/imgHome/instagram-logo.svg" alt="logo de Instagram"></a>
-                <a href="https://www.facebook.com/" target="_blank"><img src="../static/images/imgHome/facebook-logo.svg" alt="logo de Facebook"></a>
-                <a href="https://web.whatsapp.com/" target="_blank"><img src="../static/images/imgHome/whatsapp-logo.svg" alt="logo de Whatsapp"></a>
-            </div>
-            <a href="./pages/contactoForm.html">
-                <h2 class="contact-footer">CONTACTO</h2>
-            </a>
-        </div>
-        <div class="section-footer-3">
-            <h2>NUESTRO LOCAL</h2>
-            <h2>Av. Alpes Suizos 883, CABA.</h2>
-            <h2>+54 9 11 2933-2342</h2>
-        </div>
-        <footer>
-            <script>
-                // Funcion que formatea el correo del usuario partiendolo en el "@" y devolviendo la parte que no es el dominio.
-                function formatearNombreUsuario(correo) {
-                    var partes = correo.split("@");
-                    return partes[0];
-                }
+    <?php include '../pages/footer.php'; ?>
 
-                function ocultarBotones(listaDeBotones) {
-                    listaDeBotones.forEach(element => {
-                        element.style.display = 'none';
-                    });
-                }
-
-                // Función para cargar dinámicamente el nombre de usuario
-                function cargarNombreUsuario() {
-                    // Realizar una petición al servidor para verificar la sesión
-                    fetch('../controllers/check_session.php')
-                        .then(response => response.json())
-                        .then(data => {
-                            // Verificar si el usuario está autenticado
-                            console.log(data)
-                            if (data.authenticated) {
-                                // Si el usuario está autenticado, mostrar su nombre de usuario
-                                document.getElementById('nombreUsuario').innerHTML = formatearNombreUsuario(data.usuario);
-                                document.getElementById('loginButton').style.display = 'none';
-                                ocultarBotones(document.querySelectorAll('#loginButton'));
-                            } else {
-                                // Si el usuario no está autenticado, mostrar un mensaje predeterminado
-                                document.getElementById('logoutButton').style.display = 'none';
-                                document.getElementById('shopButton').style.display = 'none';
-                                ocultarBotones(document.querySelectorAll('#addProdButton'));
-                            }
-                        });
-                }
-
-                // Llamar a la función al cargar la página
-                window.onload = cargarNombreUsuario;
-            </script>
+    <script src="../static/js/scriptNavBar.js"></script>
 </body>
 
 </html>

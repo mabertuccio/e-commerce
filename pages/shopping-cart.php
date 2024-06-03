@@ -145,6 +145,18 @@ include ("../controllers/check-session-cart.php");
                 <form action="">
                     <h3>Card Information</h3>
                     <div>
+                        <label for="name">Name:</label>
+                        <div class="input-container">
+                            <input type="text" name="name" id="name" placeholder="Example" />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="dni">DNI:</label>
+                        <div class="input-container">
+                            <input type="text" name="dni" id="dni" placeholder="XXXXXXXX" />
+                        </div>
+                    </div>
+                    <div>
                         <label for="card-number" id="card-label">Card Number:</label>
                         <div class="input-container">
                             <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" />
@@ -171,6 +183,8 @@ include ("../controllers/check-session-cart.php");
     <script src="../static/js/credit-card-validation.js"></script>
     <script src="../static/js/expiration-date-validation.js"></script>
     <script src="../static/js/cvv-validation.js"></script>
+    <script src="../static/js/name-validation.js"></script>
+    <script src="../static/js/dni-validation.js"></script>
 </body>
 
 </html>

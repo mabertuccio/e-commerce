@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare("INSERT INTO usuarios (email, password, tipo_usuario) VALUES (?, ?, ?)");
             $tipo_usuario = 'Cliente';
             $stmt->execute([$useremail, $hashedPassword, $tipo_usuario]);
-            header("Location: ../index.html");
+            header("Location: ../index.php");
             exit();
         }
     }

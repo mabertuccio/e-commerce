@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include './controllers/create-product-target.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +49,7 @@
         <div class="navbar-sections">
             <nav>
                 <ul>
-                    <li><a href="/index.php">INICIO</a></li>
+                    <li><a href="index.php">INICIO</a></li>
                     <li><a href="./pages/products-page.php">PRODUCTOS</a></li>
                     <li><a href="">NOSOTROS</a></li>
                     <li><a href="./pages/contactoForm.html">CONTACTO</a></li>
@@ -66,48 +71,45 @@
 
     <!-- Productos más vendidos -->
 
+    <?php 
+
+    if (!isset($_SESSION['carrito'])) {
+    $_SESSION['carrito'] = array();
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_to_cart'])) {
+        // Verificar si la sesión 'carrito' ya existe
+        if (!isset($_SESSION['carrito'])) {
+            // Si no existe, inicializarla como un array vacío
+            $_SESSION['carrito'] = array();
+        }
+        // Agregar la ID y cantidad del producto al carrito
+        $_SESSION['carrito'][] = array(
+            'id' => $_POST['product_id'],
+            'cantidad' => 1
+        );
+        header("Location: index.php");
+    }
+
+    // echo "<h2>Productos en el carrito:</h2>";
+    // if (!empty($_SESSION['carrito'])) {
+    // foreach ($_SESSION['carrito'] as $producto) {
+    //     echo "<p>El ID es: " . $producto['id'] . "</p>";
+    //     echo "<p>La cantidad es: " . $producto['cantidad'] . "</p>";
+    //     echo "<hr>";
+    // }
+    // } else {
+    //     echo "<p>No hay productos en el carrito.</p>";
+    // }
+
+    ?>
+
+    <!-- Imprimir la sesión 'carrito' para confirmar que se ha guardado -->
+    
     <section class="container-products">
         <h2 class="text-most-sold">PRODUCTOS DESTACADOS</h2>
         <div class="container-products-cards">
-
-            <?php
-            include '../e-commerce/controllers/bbdd.php';
-
-            $query = "SELECT * FROM productos ORDER BY cantidad LIMIT 4";
-            $stmt = $conn->prepare($query);
-            $stmt->execute();
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
-
-                <div class="product-card">
-                    <div class="image-product-card">
-                        <img src="">
-                    </div>
-                    <div class="product-info-container">
-                        <h2 class="product-card-name">
-                            <?= $row['nombre'] . " " . $row['descripcion'] ?>
-                        </h2>
-                        <div class="pr-sb-container">
-                            <h3 class="product-card-price">
-                                <?= $row['precio'] . "$" ?>
-                            </h3>
-                            <div class="product-card-shop-button">
-                                <a href="#">
-                                    <span class="material-symbols-outlined" id="addProdButton">
-                                        add_shopping_cart
-                                    </span>
-                                </a>
-                                <a href="./pages/login.php">
-                                    <span class="material-symbols-outlined" id="loginButton">
-                                        login
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endwhile; ?>
+            <?php crearTarjetasProductos("SELECT * FROM productos ORDER BY cantidad LIMIT 4", $conn, "pages\login.php") ?>
         </div>
     </section>
 
@@ -210,7 +212,7 @@
                                 // Si el usuario está autenticado, mostrar su nombre de usuario
                                 document.getElementById('nombreUsuario').innerHTML = formatearNombreUsuario(data.usuario);
                                 document.getElementById('loginButton').style.display = 'none';
-                                ocultarBotones(document.querySelectorAll('#loginButton'));
+                                ocultarBotones(document.querySelectorAll('#addProdButtonUnloged'));
                             } else {
                                 // Si el usuario no está autenticado, mostrar un mensaje predeterminado
                                 document.getElementById('logoutButton').style.display = 'none';

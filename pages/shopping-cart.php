@@ -1,5 +1,6 @@
 <?php
 include ("../controllers/check-session-cart.php");
+include ("../controllers/get-products.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,15 +47,12 @@ include ("../controllers/check-session-cart.php");
                         */
                         include "products.php";
 
-                        $products = [
-                            ["name" => "Product 1", "price" => 10.00],
-                            ["name" => "Product 2", "price" => 10.50],
-                            ["name" => "Product 3", "price" => 11.00],
-                            ["name" => "Product 4", "price" => 11.50]
-                        ];
-
-                        foreach ($products as $product) {
-                            echo generateProduct($product["name"], $product["price"]);
+                        // Verifica si hay productos en el carrito
+                        if (!empty($products)) {
+                            // Itera sobre los productos y se muestran en la tabla
+                            foreach ($products as $product) {
+                                echo generateProduct($product["nombre"], $product["precio"], $product["cantidad"]);
+                            }
                         }
                         ?>
                     </tbody>

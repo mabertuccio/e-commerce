@@ -16,6 +16,7 @@ include ("../controllers/get-products.php");
     <link rel="stylesheet" href="../static/styles/validations.css">
     <link rel="stylesheet" href="../static/styles/danger-validation.css">
     <link rel="stylesheet" href="../static/styles/summary.css" />
+    <link rel="stylesheet" href="../static/styles/checkout-modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" type="text/css" href="../static/styles/stylesHome.css">
@@ -202,6 +203,17 @@ include ("../controllers/get-products.php");
                             </span>
                         </div>
                         <hr class="divider">
+                        <div id="confirm-modal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>¿Está seguro que quiere confirmar la compra?</p>
+                                <button id="confirm-yes">Sí</button>
+                                <button id="confirm-no">No</button>
+                            </div>
+                        </div>
+                        <span class="danger-validation" id="checkout-validation" style="display:none; color:red;">
+                            <p>Complete los campos para confirmar la compra</p>
+                        </span>
                         <button id="checkout-button">Comprar</button>
                     </form>
                 </div>
@@ -218,6 +230,7 @@ include ("../controllers/get-products.php");
     <script src="../static/js/name-validation.js"></script>
     <script src="../static/js/dni-validation.js"></script>
     <script src="../static/js/remove-product.js"></script>
+    <script src="../static/js/checkout-handler.js"></script>
 </body>
 
 </html>

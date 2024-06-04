@@ -6,8 +6,9 @@ cardNumberInput.addEventListener("input", () => {
   let cardNumber = cardNumberInput.value.replace(/\D/g, ""); // Elimina caracteres no numéricos
 
   // Verifica si la longitud del número de tarjeta excede los 16 dígitos
-  if (cardNumber.length > 16) {
+  if (cardNumber.length < 16) {
     cardNumberInput.classList.add("error"); // Agrega la clase 'error' para resaltar el campo
+    cardLabel.textContent = "N° de Tarjeta:";
   } else {
     cardNumberInput.classList.remove("error"); // Remueve la clase 'error' para eliminar el resaltado
   }
@@ -39,6 +40,6 @@ cardNumberInput.addEventListener("input", () => {
     }
   } else {
     // Si la longitud del número de tarjeta no es exactamente 16 dígitos, muestra el texto predeterminado
-    cardLabel.textContent = "N° de Tarjeta:";
+    // cardLabel.textContent = "N° de Tarjeta:";
   }
 });

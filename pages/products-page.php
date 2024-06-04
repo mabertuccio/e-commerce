@@ -1,6 +1,77 @@
 <?php
 session_start();
 include '../controllers/create-product-target.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_to_cart'])) {
+    // Obtener la cantidad disponible en la base de datos para el producto
+    $sql = "SELECT cantidad FROM productos WHERE id = :id AND estado = 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $_POST['product_id']);
+    $stmt->execute();
+    $cantidad_disponible = $stmt->fetchColumn();
+
+    // Verificar si la cantidad disponible es mayor que cero y si es así, continuar con el proceso de agregar al carrito
+    if ($cantidad_disponible > 0) {
+        // Verificar si el producto ya está en el carrito
+        $product_id = $_POST['product_id'];
+        $product_found = false;
+
+        // Verificar si la cookie 'carrito' ya existe
+        if (isset($_COOKIE['carrito'])) {
+            // Decodificar la cookie del carrito en un array
+            $carrito = json_decode($_COOKIE['carrito'], true);
+
+            // Verificar si el producto ya está en el carrito
+            foreach ($carrito as &$item) {
+                if ($item['id'] == $product_id) {
+                    // Incrementar la cantidad solo si no excede la cantidad disponible en la base de datos
+                    if (($item['cantidad'] + 1) <= $cantidad_disponible) {
+                        $item['cantidad'] += 1;
+                    }
+                    $product_found = true;
+                    break;
+                }
+            }
+
+            // Si el producto no está en el carrito y la cantidad disponible es mayor que cero, agregarlo
+            if (!$product_found) {
+                $carrito[] = array(
+                    'id' => $product_id,
+                    'cantidad' => 1
+                );
+            }
+        } else {
+            // Si la cookie no existe, inicializar el carrito con el producto
+            $carrito = array(
+                array(
+                    'id' => $product_id,
+                    'cantidad' => 1
+                )
+            );
+        }
+
+        // Codificar el carrito de nuevo a JSON y guardarlo en la cookie
+        setcookie('carrito', json_encode($carrito), time() + (86400 * 30), "/"); // 86400 = 1 día
+    }
+
+    // Redireccionar de nuevo a la página de origen
+    header("Location: ./products-page.php");
+    exit();
+}
+
+// Decodificar la cookie del carrito
+$carrito = isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : array();
+
+echo "<h2>Productos en el carrito:</h2>";
+
+if (!empty($carrito)) {
+    foreach ($carrito as $producto) {
+        echo "<p>El ID es: " . htmlspecialchars($producto['id']) . "</p>";
+        echo "<p>La cantidad es: " . htmlspecialchars($producto['cantidad']) . "</p>";
+        echo "<hr>";
+    }
+} else {
+    echo "<p>No hay productos en el carrito.</p>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,38 +94,6 @@ include '../controllers/create-product-target.php';
 
     <!-- Productos más vendidos -->
 
-    <?php
-
-    if (!isset($_SESSION['carrito'])) {
-        $_SESSION['carrito'] = array();
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_to_cart'])) {
-        // Verificar si la sesión 'carrito' ya existe
-        if (!isset($_SESSION['carrito'])) {
-            // Si no existe, inicializarla como un array vacío
-            $_SESSION['carrito'] = array();
-        }
-        // Agregar la ID y cantidad del producto al carrito
-        $_SESSION['carrito'][] = array(
-            'id' => $_POST['product_id'],
-            'cantidad' => 1
-        );
-        header("Location: ./products-page.php");
-    }
-
-    echo "<h2>Productos en el carrito:</h2>";
-    if (!empty($_SESSION['carrito'])) {
-        foreach ($_SESSION['carrito'] as $producto) {
-            echo "<p>El ID es: " . $producto['id'] . "</p>";
-            echo "<p>La cantidad es: " . $producto['cantidad'] . "</p>";
-            echo "<hr>";
-        }
-    } else {
-        echo "<p>No hay productos en el carrito.</p>";
-    }
-
-    ?>
 
     <section class="container-products">
         <h2 class="text-most-sold">NUESTROS PRODUCTOS</h2>

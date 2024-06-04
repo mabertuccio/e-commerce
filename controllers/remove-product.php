@@ -1,32 +1,48 @@
 <?php
-session_start();
+// Función para obtener el carrito desde la cookie
+function obtenerCarrito()
+{
+    return isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : array();
+}
 
-$idProducto = $_POST["product_id"];
 
-$carrito = $_SESSION["carrito"];
 
-unset($carrito[$idProducto]);
-$_SESSION["carrito"] = $carrito;
+// Función para guardar el carrito en la cookie
+function guardarCarrito($carrito)
+{
+    setcookie('carrito', json_encode($carrito), time() + (86400 * 30), "/"); // 86400 = 1 día
+}
 
-/*
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST['product_id'])) {
-        $productId = intval($_POST['product_id']);
-
-        // Verifica si el carrito existe en la sesión
-        if (isset($_SESSION['carrito'])) {
-            foreach ($_SESSION['carrito'] as $key => $producto) {
-                if ($producto['id'] == $productId) {
-                    unset($_SESSION['carrito'][$key]);
-                    $_SESSION['carrito'] = array_values($_SESSION['carrito']);
-                    break;
-                }
-            }
+// Función para eliminar un elemento del carrito según su ID
+function eliminarElementoDelCarrito($carrito, $productId)
+{
+    foreach ($carrito as $key => &$producto) {
+        if ($producto['id'] == $productId) {
+            unset($carrito[$key]);
+            break; // Salir del bucle después de eliminar el producto
         }
     }
+    return array_values($carrito); // Reindexar el array
 }
-*/
 
-// Redirige de vuelta al carrito
-header("Location: ../pages/shopping-cart.php");
-exit();
+// Código principal
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['product_id'])) {
+    $product_id = $_POST['product_id'];
+
+    // Obtener el carrito actual
+    $carrito = obtenerCarrito();
+
+
+    // Eliminar el elemento del carrito
+    $carrito = eliminarElementoDelCarrito($carrito, $product_id);
+
+
+    // Guardar el carrito actualizado en la cookie
+    guardarCarrito($carrito);
+
+    // Redirigir de nuevo a la página del carrito de compras
+    header("Location: ../pages/shopping-cart.php");
+    exit();
+}

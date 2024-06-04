@@ -29,14 +29,6 @@ body header div div {
     align-items: center;
 }
 
-.search-bar {
-    display: flex;
-    justify-content: space-between;
-    width: 310px;
-    height: 40px;
-    font-size: 20px;
-}
-
 body header div .login-register-container {
     justify-content: flex-end;
     align-items: center;

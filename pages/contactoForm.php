@@ -23,20 +23,23 @@
   <section class="form-wrap">
     <section class="contact-info">
       <section class="info-titulo">
-        <img src="../static/images/003-avatar.png" alt="usuario" />
+        <span class="material-symbols-outlined">
+          person_book
+        </span>
         <h2>
-          Informacion <br />
-          de Contacto
+          INFORMACIÓN DE CONTACTO
         </h2>
       </section>
       <section class="info-item">
-        <p>
-          <img src="../static/images/001-correo-electronico.png" alt="correo" />
-        </p>
+        <span class="material-symbols-outlined">
+          mail
+        </span>
         <p class="correo2">electroshopmas@outlook.com</p>
-        <p><img src="../static/images/002-llamada.png" alt="telefono" /></p>
+        <span class="material-symbols-outlined">
+          phone_in_talk
+        </span>
         <p class="telefono2">+54 9 11 2933-2342</p>
-        <a href="../index.php" class="volver">volver</a>
+        <a href="../index.php" class="volver">Volver</a>
         <!-- agragar index pagina de inicio -->
       </section>
     </section>

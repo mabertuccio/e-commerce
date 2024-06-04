@@ -2,7 +2,7 @@
   width: 1050px;
   height: 530px;
   margin: 50px auto;
-  background: #449ce4;
+  background: #4B5CBF;
   display: flex;
   border-radius: 10px;
   overflow: hidden;
@@ -16,7 +16,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: rgb(75, 149, 245);
+  background-color: #4B5CBF;
   opacity: 0.5;
 }
 
@@ -26,8 +26,10 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
   justify-content: center;
-
+  background-color: #1c2347;
+  border-right: 2px solid white;
   background-image: url(../images/login/programacion3.jpeg);
   background-size: cover;
   background-position: center;
@@ -35,9 +37,13 @@
 
 .info-titulo,
 .info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 2;
-  color: rgb(2, 10, 18);
+  color: rgb(255, 255, 255);
 }
 
 .info-titulo {
@@ -45,37 +51,34 @@
 }
 
 .info-titulo span {
-  font-size: 100px;
-  display: block;
+  color: white;
+  font-size: 70px;
   text-align: center;
   margin-bottom: 15px;
 }
 
+.info-item span {
+  color: white;
+  font-size: 50px;
+  margin-bottom: 10px;
+  margin-inline: 0px;
+}
+
 .info-titulo h2 {
-  font-size: 35px;
+  color: white;
+  font-size: 23px;
   text-align: center;
 }
 
 .info-item p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.info-item img {
-  display: block;
-  margin: 0px auto;
-}
-
 .info-item,
 .p .correo {
   font-size: 20px;
-  margin-right: 10px;
-  margin-left: 4px;
-  text-align: center;
 }
 
 .info-item p,
@@ -88,20 +91,20 @@
 
 .volver {
   width: 180px;
-  background: rgb(40, 104, 241);
+  background: #303b79;
   padding: 10px;
-  border: none;
-  border-radius: 25px;
-  float: right;
-  text-decoration: none;
-  color: black;
+  margin-top: 20px;
+  border: 2px solid white;
+  border-radius: 7px;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
 }
 
-.volver:hover {
-  background: rgb(75, 149, 245);
+
+.volver:active{
+  background-color: #1c2347;
 }
 
 form.form-contact {
@@ -112,7 +115,7 @@ form.form-contact {
 form.form-contact h2 {
   font-size: 25px;
   font-weight: 600;
-  color: black;
+  color: rgb(255, 255, 255);
   margin-bottom: 30px;
 }
 
@@ -123,12 +126,14 @@ form.form-contact .user-info {
 
 form.form-contact label {
   font-weight: 600;
+  margin-bottom: 10px;
+  color: white;
   border-bottom-color: #dd6565;
 }
 
 form.form-contact input {
   width: 100%;
-  background: rgb(199, 216, 248);
+  background: rgb(227, 219, 251);
   padding: 3px 0px 2px;
   margin-bottom: 20px;
   border: none;
@@ -143,7 +148,7 @@ form.form-contact input {
 form.form-contact textarea {
   width: 100%;
   padding: 3px 0px 1px;
-  background: rgb(199, 216, 248);
+  background: rgb(227, 219, 251);
   margin-bottom: 20px;
   border: none;
   border-bottom: 2px rgb(199, 216, 248);
@@ -158,38 +163,23 @@ form.form-contact textarea {
   max-height: 90px;
 }
 
-form.form-contact input[type='button'] {
-  width: 180px;
-  background: rgb(40, 104, 241);
-  padding: 10px;
-  border: none;
-  border-radius: 25px;
-  align-self: flex-end;
-  color: black;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-form.form-contact input[type='button']:hover {
-  background: rgb(118, 167, 245);
-}
-
 form.form-contact input[type='submit'] {
   width: 180px;
-  background: rgb(40, 104, 241);
+  background: #303b79;
   padding: 10px;
-  border: none;
-  border-radius: 25px;
+  border: 2px solid white;
+  border-radius: 7px;
   align-self: flex-end;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
 }
-form.form-contact input[type='submit']:hover {
-  background: rgb(118, 167, 245);
+
+form.form-contact input[type='submit']:active{
+  background-color: #1c2347;
 }
+
 .modal-wrap {
   width: 100%;
   height: 100vh;

@@ -22,86 +22,117 @@ if (isset($_SESSION['mensaje_error_login'])) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/styles/estilo.css">
     <title>FORMULARIO DE REGISTRO E INICIO SESIÓN</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+    </style>
 </head>
 
 <body>
-    <div class="container-form register <?php echo $registerFormClass; ?>">
-        <div class="information">
-            <div class="info-childs">
-                <h2>Bienvenido</h2>
-                <p>Ingresar datos para crear cuenta</p>
-                <input type="button" value="Iniciar Sesión" id="sign-in">
+    <header>
+        <!-- Navbar search -->
+        <div class="navbar-search">
+            <div class="navbar-search-empty">
+                <!-- Relleno para estructurar -->
+            </div>
+            <div class="logo">
+                <img src="../static/images/imgHome/logo electro shop.png" alt="logo de la tienda">
+            </div>
+            <div class="login-register-container">
+                <a class="login-button" id="loginButton" href="./login.php">
+                    INICIAR SESIÓN
+                </a>
             </div>
         </div>
-        <div class="form-information">
-            <div class="form-information-childs">
-                <h2>Crear una Cuenta</h2>
-                <?php
-                if (isset($_SESSION['mensaje_error'])) {
-                    echo '<div style="color: red;">' . $_SESSION['mensaje_error'] . '</div>';
-                    unset($_SESSION['mensaje_error']);
-                }
-                ?>
-                <form id="register-form" class="form form-register" action="../controllers/registro.php" method="post">
-                    <div>
-                        <label>
-                            <i class='bx bx-envelope'></i>
-                            <input type="email" placeholder="Correo Electronico" name="email" id="register-email" required>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <i class='bx bx-lock-alt'></i>
-                            <input type="password" placeholder="Contraseña" name="password" id="register-password" required>
-                        </label>
-                    </div>
-                    <input type="submit" value="Registrarse">
-                    <div class="alerta-error" id="register-error" style="display: none; color:red">Todos los campos son
-                        obligatorios</div>
-                </form>
+        <!-- Navbar sections -->
+        <div class="navbar-sections">
+            <nav>
+                <ul>
+                    <li><a href="../index.php">INICIO</a></li>
+                    <li><a href="./products-page.php">PRODUCTOS</a></li>
+                    <li><a href="./nosotros.php">NOSOTROS</a></li>
+                    <li><a href="./contactoForm.php">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="form-container-body">
+        <div class="container-form register <?php echo $registerFormClass; ?>">
+            <div class="information">
+                <div class="info-childs">
+                    <h2>Bienvenido</h2>
+                    <p>¿Ya tienes una cuenta?</p>
+                    <input type="button" value="INICIAR SESIÓN" id="sign-in">
+                </div>
+            </div>
+            <div class="form-information">
+                <div class="form-information-childs">
+                    <h2>Crear una cuenta</h2>
+                    <?php
+                    if (isset($_SESSION['mensaje_error'])) {
+                        echo '<div style="color: red;">' . $_SESSION['mensaje_error'] . '</div>';
+                        unset($_SESSION['mensaje_error']);
+                    }
+                    ?>
+                    <form id="register-form" class="form form-register" action="../controllers/registro.php" method="post">
+                        <div>
+                            <label>
+                                <i class='bx bx-envelope'></i>
+                                <input type="email" placeholder="Correo Electronico" name="email" id="register-email" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <i class='bx bx-lock-alt'></i>
+                                <input type="password" placeholder="Contraseña" name="password" id="register-password" required>
+                            </label>
+                        </div>
+                        <input type="submit" value="REGISTRARSE">
+                        <div class="alerta-error" id="register-error" style="display: none; color:red">Todos los campos son
+                            obligatorios</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-form login <?php echo $loginFormClass; ?>">
+            <div class="information">
+                <div class="info-childs">
+                    <h2>Bienvenido</h2>
+                    <p>¿No tienes una cuenta?</p>
+                    <input type="button" value="REGISTRARSE" id="sign-up">
+                </div>
+            </div>
+            <div class="form-information">
+                <div class="form-information-childs">
+                    <h2>Iniciar sesión</h2>
+                    <?php
+                    if (isset($_SESSION['mensaje_error_login'])) {
+                        echo '<div style="color: red;">' . $_SESSION['mensaje_error_login'] . '</div>';
+                        unset($_SESSION['mensaje_error_login']);
+                    }
+                    ?>
+                    <form id="login-form" action="../controllers/login.php" class="form form-login" method="post">
+                        <div>
+                            <label>
+                                <i class='bx bx-envelope'></i>
+                                <input type="email" placeholder="Correo Electronico" name="email" id="login-email" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <i class='bx bx-lock-alt'></i>
+                                <input type="password" placeholder="Contraseña" name="password" id="login-password" required>
+                            </label>
+                        </div>
+                        <input type="submit" value="INGRESAR">
+                        <div class="alerta-error" id="login-error" style="display: none; color: red;">Todos los campos son
+                            obligatorios
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="container-form login <?php echo $loginFormClass; ?>">
-        <div class="information">
-            <div class="info-childs">
-                <h2>¡¡Bienvenido nuevamente!!</h2>
-                <p>Por favor Inicia Sesión con tus datos</p>
-                <input type="button" value="Registrarse" id="sign-up">
-            </div>
-        </div>
-        <div class="form-information">
-            <div class="form-information-childs">
-                <h2>Iniciar Sesión</h2>
-                <?php
-                if (isset($_SESSION['mensaje_error_login'])) {
-                    echo '<div style="color: red;">' . $_SESSION['mensaje_error_login'] . '</div>';
-                    unset($_SESSION['mensaje_error_login']);
-                }
-                ?>
-                <form id="login-form" action="../controllers/login.php" class="form form-login" method="post">
-                    <div>
-                        <label>
-                            <i class='bx bx-envelope'></i>
-                            <input type="email" placeholder="Correo Electronico" name="email" id="login-email" required>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <i class='bx bx-lock-alt'></i>
-                            <input type="password" placeholder="Contraseña" name="password" id="login-password" required>
-                        </label>
-                    </div>
-                    <input type="submit" value="Iniciar Sesión">
-                    <div class="alerta-error" id="login-error" style="display: none; color: red;">Todos los campos son
-                        obligatorios
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+    <?php include '../pages/footer.php'; ?>
     <!--     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const registerForm = document.getElementById('register-form');

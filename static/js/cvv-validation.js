@@ -24,7 +24,9 @@ cvvInput.addEventListener("input", () => {
   // Aplica estilos de error en caso de ser necesario
   if (!isValidCVV) {
     cvvInput.classList.add("error"); // Aplicar clase de error para resaltar el campo
+    document.getElementById("validacion-cvv").style.display = "block";
   } else {
     cvvInput.classList.remove("error"); // Quitar la clase de error si el valor es válido
+    document.getElementById("validacion-cvv").style.display = "none";
   }
 });

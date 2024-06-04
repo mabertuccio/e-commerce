@@ -14,6 +14,7 @@ include ("../controllers/get-products.php");
     <link rel="stylesheet" href="../static/styles/main.css" />
     <link rel="stylesheet" href="../static/styles/table.css" />
     <link rel="stylesheet" href="../static/styles/validations.css">
+    <link rel="stylesheet" href="../static/styles/danger-validation.css">
     <link rel="stylesheet" href="../static/styles/summary.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -150,7 +151,7 @@ include ("../controllers/get-products.php");
                         </span>
                     </div>
 
-                    <hr>
+                    <hr class="divider">
                     <form action="">
                         <h3 style="padding:10px 0 10px 0;">Información de la Tarjeta</h3>
                         <div>
@@ -158,12 +159,18 @@ include ("../controllers/get-products.php");
                             <div class="input-container">
                                 <input type="text" name="name" id="name" placeholder="Nombre" required />
                             </div>
+                            <span class="danger-validation" id="validacion-nombre">
+                                <p>Error en el nombre</p>
+                            </span>
                         </div>
                         <div>
                             <label for="dni">DNI:</label>
                             <div class="input-container">
                                 <input type="text" name="dni" id="dni" placeholder="XXXXXXXX" required />
                             </div>
+                            <span class="danger-validation" id="validacion-dni" style="display:none; color:red;">
+                                <p>Error en el DNI</p>
+                            </span>
                         </div>
                         <div>
                             <label for="card-number" id="card-label">N° de Tarjeta:</label>
@@ -171,6 +178,9 @@ include ("../controllers/get-products.php");
                                 <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX"
                                     required />
                             </div>
+                            <span class="danger-validation" id="validacion-tarjeta" style="display:none; color:red;">
+                                <p>Error en la tarjeta</p>
+                            </span>
                         </div>
                         <div>
                             <label for="expiration-date" id="expiration-label">Fecha de Vencimiento:</label>
@@ -187,8 +197,11 @@ include ("../controllers/get-products.php");
                             <div class="input-container">
                                 <input type="text" id="cvv" name="cvv" placeholder="XXX" required />
                             </div>
+                            <span class="danger-validation" id="validacion-cvv" style="display:none; color:red;">
+                                <p>Error en el CVV</p>
+                            </span>
                         </div>
-                        <hr>
+                        <hr class="divider">
                         <button id="checkout-button">Comprar</button>
                     </form>
                 </div>

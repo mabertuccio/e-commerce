@@ -12,7 +12,9 @@ dniInput.addEventListener("input", () => {
   // Verifica si el DNI tiene exactamente 8 caracteres numéricos
   if (/^\d{8}$/.test(dni)) {
     dniInput.classList.remove("error"); // Remueve la clase 'error' si el DNI es válido
+    document.getElementById("validacion-dni").style.display = "none";
   } else {
     dniInput.classList.add("error"); // Agrega la clase 'error' para resaltar el campo
+    document.getElementById("validacion-dni").style.display = "block";
   }
 });

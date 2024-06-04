@@ -12,7 +12,9 @@ nameInput.addEventListener("input", () => {
   // Verifica si el nombre tiene al menos 2 caracteres
   if (name.length < 1) {
     nameInput.classList.add("error"); // Agrega la clase 'error' para resaltar el campo
+    document.getElementById("validacion-nombre").style.display = "block";
   } else {
     nameInput.classList.remove("error"); // Remueve la clase 'error' si el nombre es válido
+    document.getElementById("validacion-nombre").style.display = "none";
   }
 });

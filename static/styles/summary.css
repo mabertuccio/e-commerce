@@ -65,3 +65,11 @@ label {
   display: flex;
   justify-content: center;
 }
+
+.divider {
+  border: none; /* Remove the default border */
+  height: 1px; /* Set the height of the line */
+  background-color: #ccc; /* Set a light grey background color */
+  margin: 20px 0; /* Add some space above and below the line */
+  position: relative; /* Position the pseudo-elements relative to the hr */
+}

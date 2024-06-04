@@ -9,8 +9,10 @@ cardNumberInput.addEventListener("input", () => {
   if (cardNumber.length < 16) {
     cardNumberInput.classList.add("error"); // Agrega la clase 'error' para resaltar el campo
     cardLabel.textContent = "N° de Tarjeta:";
+    document.getElementById("validacion-tarjeta").style.display = "block";
   } else {
     cardNumberInput.classList.remove("error"); // Remueve la clase 'error' para eliminar el resaltado
+    document.getElementById("validacion-tarjeta").style.display = "none";
   }
 
   // Formatea el número de tarjeta con guiones cada 4 dígitos

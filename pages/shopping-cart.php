@@ -1,6 +1,6 @@
 <?php
-include("../controllers/check-session-cart.php");
-include("../controllers/get-products.php");
+include ("../controllers/check-session-cart.php");
+include ("../controllers/get-products.php");
 
 
 ?>
@@ -18,7 +18,8 @@ include("../controllers/get-products.php");
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" type="text/css" href="../static/styles/stylesHome.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
     </style>
@@ -29,15 +30,15 @@ include("../controllers/get-products.php");
     <main>
         <div class="container">
             <div class="left-panel">
-                <h2 style="padding:10px;">Shopping Cart</h2>
+                <h2 style="padding:10px;">Carrito de Compras</h2>
                 <div class="shopping-cart">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -72,9 +73,9 @@ include("../controllers/get-products.php");
 
             </div>
             <div class="right-panel">
-                <h2 style="padding:10px;">Summary</h2>
+                <h2 style="padding:10px;">Sumario</h2>
                 <div class="pricing">
-                    <h3>Pricing</h3>
+                    <h3 style="padding:0 0 10px 0;">Precios</h3>
                     <div class="summary-row">
                         <span>Subtotal</span>
                         <span id="subtotal">
@@ -94,7 +95,7 @@ include("../controllers/get-products.php");
                         </span>
                     </div>
                     <div class="summary-row">
-                        <span>Shipping</span>
+                        <span>Envío</span>
                         <span id="shipping">
                             <span>
                                 <?php
@@ -112,7 +113,7 @@ include("../controllers/get-products.php");
                         </span>
                     </div>
                     <div class="summary-row">
-                        <span>Tax</span>
+                        <span>Impuestos</span>
                         <span id="tax">
                             <span>
                                 <?php
@@ -131,7 +132,7 @@ include("../controllers/get-products.php");
                         </span>
                     </div>
                     <div class="summary-row">
-                        <span>Grand Total</span>
+                        <span>Total General</span>
                         <span id="grand-total">
                             <span>
                                 <?php
@@ -151,9 +152,9 @@ include("../controllers/get-products.php");
 
                     <hr>
                     <form action="">
-                        <h3>Card Information</h3>
+                        <h3 style="padding:10px 0 10px 0;">Información de la Tarjeta</h3>
                         <div>
-                            <label for="name">Name:</label>
+                            <label for="name">Nombre:</label>
                             <div class="input-container">
                                 <input type="text" name="name" id="name" placeholder="Nombre" required />
                             </div>
@@ -165,15 +166,17 @@ include("../controllers/get-products.php");
                             </div>
                         </div>
                         <div>
-                            <label for="card-number" id="card-label">Card Number:</label>
+                            <label for="card-number" id="card-label">N° de Tarjeta:</label>
                             <div class="input-container">
-                                <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" required />
+                                <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX"
+                                    required />
                             </div>
                         </div>
                         <div>
-                            <label for="expiration-date" id="expiration-label">Expiration Date:</label>
+                            <label for="expiration-date" id="expiration-label">Fecha de Vencimiento:</label>
                             <div class="input-container">
-                                <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY" required />
+                                <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY"
+                                    required />
                             </div>
                             <span class="danger-validation" id="validacion-fecha" style="display:none; color:red;">
                                 <p>Error en la fecha</p>
@@ -186,7 +189,7 @@ include("../controllers/get-products.php");
                             </div>
                         </div>
                         <hr>
-                        <button id="checkout-button">Checkout</button>
+                        <button id="checkout-button">Comprar</button>
                     </form>
                 </div>
             </div>

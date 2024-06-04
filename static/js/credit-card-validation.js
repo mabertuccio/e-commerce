@@ -31,14 +31,14 @@ cardNumberInput.addEventListener("input", () => {
     if (!isNaN(firstFourDigits)) {
       if (firstFourDigits < 4000) {
         // Si los primeros 4 números son menores a 4000, se considera una tarjeta de crédito
-        cardLabel.textContent = "Credit Card Number:";
+        cardLabel.textContent = "N° de Tarjeta de Credito:";
       } else {
         // De lo contrario, se considera una tarjeta de débito
-        cardLabel.textContent = "Debit Card Number:";
+        cardLabel.textContent = "N° de Tarjeta de Debito:";
       }
     }
   } else {
     // Si la longitud del número de tarjeta no es exactamente 16 dígitos, muestra el texto predeterminado
-    cardLabel.textContent = "Card Number:";
+    cardLabel.textContent = "N° de Tarjeta:";
   }
 });

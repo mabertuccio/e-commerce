@@ -2,6 +2,19 @@
 include ("../controllers/check-session-cart.php");
 include ("../controllers/get-products.php");
 
+$carrito = isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : array();
+
+echo "<h2>Productos en el carrito:</h2>";
+
+if (!empty($carrito)) {
+    foreach ($carrito as $producto) {
+        echo "<p>El ID es: " . htmlspecialchars($producto['id']) . "</p>";
+        echo "<p>La cantidad es: " . htmlspecialchars($producto['cantidad']) . "</p>";
+        echo "<hr>";
+    }
+} else {
+    echo "<p>No hay productos en el carrito.</p>";
+}
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +75,7 @@ include ("../controllers/get-products.php");
                             if (!empty($products)) {
                                 foreach ($products as $product) {
 
-                                    echo generateProduct($product["nombre"], $product["precio"], $product["cantidad"], $product["id"]);
+                                    echo generateProduct($product["nombre"], $product["precio"], $product["cantidad"], $product["id"], $product['max_cantidad']);
                                 }
                             } else {
                                 echo "<tr><td colspan='5'>Carrito vacío.</td></tr>";

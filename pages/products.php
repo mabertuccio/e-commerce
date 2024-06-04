@@ -6,7 +6,7 @@
 El código siguiente se encarga de guardar los precios y de mostrar los productos.
 ------------------
 */
-function generateProduct($name, $price, $quantity, $id)
+function generateProduct($name, $price, $quantity, $id, $cantidad_maxima)
 {
     global $precios;
     $precios[] = $price;
@@ -18,16 +18,15 @@ function generateProduct($name, $price, $quantity, $id)
         </td>
         <td>$name</td>
         <td>
-            <input type='number' value='1' min='1' max='$quantity' id='quantity' />
+            <input type='number' value='$quantity' min='1' max='$cantidad_maxima' id='quantity' />
         </td>
         <td>$$price</td>
         <td>
-            <form action='../controllers/remove-product.php' method='POST' style='display:inline;'>
+            <form name='remove_from_cart' action='../controllers/remove-product.php' method='POST' style='display:inline;'>
                 <input type='hidden' name='product_id' value=$id />
                 <button type='submit' class='remove-button' data-id=$id>Eliminar</button>
             </form>
-    
-        </td>
+            </td>
     </tr>
     ";
 }

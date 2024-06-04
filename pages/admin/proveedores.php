@@ -109,8 +109,7 @@ $proveedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
       fetch('../../controllers/check_session.php')
          .then((response) => response.json())
          .then((data) => {
-            // Verificar si el usuario está autenticado
-            console.log(data);
+            // Verificar si el usuario está autenticado            
             if (data.authenticated) {
                // Si el usuario está autenticado, mostrar su nombre de usuario
                document.getElementById('nombreUsuario').innerHTML =

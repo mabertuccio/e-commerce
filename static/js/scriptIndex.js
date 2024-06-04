@@ -13,7 +13,7 @@ function ocultarBotones(listaDeBotones) {
 // Función para cargar dinámicamente el nombre de usuario
 function cargarNombreUsuario() {
   // Realizar una petición al servidor para verificar la sesión
-  fetch('../controllers/check_session.php')
+  fetch('./controllers/check_session.php')
     .then((response) => response.json())
     .then((data) => {
       // Verificar si el usuario está autenticado

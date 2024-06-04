@@ -32,16 +32,16 @@
             <img src="./static/images/imgHome/NVIDIA-logo.png" alt="">
         </div>
         <div class="slide-item">
-            <img src="../static/images/imgHome/PHILIPS-logo.png" alt="">
+            <img src="./static/images/imgHome/PHILIPS-logo.png" alt="">
         </div>
         <div class="slide-item">
-            <img src="../static/images/imgHome/SAMSUNG-logo.png" alt="">
+            <img src="./static/images/imgHome/SAMSUNG-logo.png" alt="">
         </div>
         <div class="slide-item">
-            <img src="../static/images/imgHome/SONY-logo.png" alt="">
+            <img src="./static/images/imgHome/SONY-logo.png" alt="">
         </div>
         <div class="slide-item">
-            <img src="../static/images/imgHome/WD-logo.png" alt="">
+            <img src="./static/images/imgHome/WD-logo.png" alt="">
         </div>
     </div>
 </section>

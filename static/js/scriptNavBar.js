@@ -17,7 +17,6 @@ function cargarNombreUsuario() {
     .then((response) => response.json())
     .then((data) => {
       // Verificar si el usuario está autenticado
-      console.log(data);
       if (data.authenticated) {
         // Si el usuario está autenticado, mostrar su nombre de usuario
         document.getElementById('nombreUsuario').innerHTML =

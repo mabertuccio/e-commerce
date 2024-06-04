@@ -1,0 +1,69 @@
+/* Estilos del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal button {
+  display: inline-block;
+  margin: 20px 10px 0 10px; /* Añadir márgenes */
+  padding: 10px 20px; /* Ajustar padding */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: lightgray;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.modal #confirm-yes {
+  background-color: #05b428e5;
+}
+
+.modal #confirm-yes:hover {
+  background-color: #06c92de5;
+}
+
+.modal #confirm-no {
+  background-color: #d10303;
+}
+
+.modal #confirm-no:hover {
+  background-color: #d10303d2;
+}

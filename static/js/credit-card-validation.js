@@ -6,10 +6,13 @@ cardNumberInput.addEventListener("input", () => {
   let cardNumber = cardNumberInput.value.replace(/\D/g, ""); // Elimina caracteres no numéricos
 
   // Verifica si la longitud del número de tarjeta excede los 16 dígitos
-  if (cardNumber.length > 16) {
+  if (cardNumber.length < 16) {
     cardNumberInput.classList.add("error"); // Agrega la clase 'error' para resaltar el campo
+    cardLabel.textContent = "N° de Tarjeta:";
+    document.getElementById("validacion-tarjeta").style.display = "block";
   } else {
     cardNumberInput.classList.remove("error"); // Remueve la clase 'error' para eliminar el resaltado
+    document.getElementById("validacion-tarjeta").style.display = "none";
   }
 
   // Formatea el número de tarjeta con guiones cada 4 dígitos
@@ -31,14 +34,14 @@ cardNumberInput.addEventListener("input", () => {
     if (!isNaN(firstFourDigits)) {
       if (firstFourDigits < 4000) {
         // Si los primeros 4 números son menores a 4000, se considera una tarjeta de crédito
-        cardLabel.textContent = "Credit Card Number:";
+        cardLabel.textContent = "N° de Tarjeta de Credito:";
       } else {
         // De lo contrario, se considera una tarjeta de débito
-        cardLabel.textContent = "Debit Card Number:";
+        cardLabel.textContent = "N° de Tarjeta de Debito:";
       }
     }
   } else {
     // Si la longitud del número de tarjeta no es exactamente 16 dígitos, muestra el texto predeterminado
-    cardLabel.textContent = "Card Number:";
+    // cardLabel.textContent = "N° de Tarjeta:";
   }
 });

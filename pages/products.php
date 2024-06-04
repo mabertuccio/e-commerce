@@ -24,7 +24,7 @@ function generateProduct($name, $price, $quantity, $id, $cantidad_maxima)
         <td>
             <form name='remove_from_cart' action='../controllers/remove-product.php' method='POST' style='display:inline;'>
                 <input type='hidden' name='product_id' value=$id />
-                <button type='submit' class='remove-button' >Remove</button>
+                <button type='submit' class='remove-button' data-id=$id>Eliminar</button>
             </form>
             </td>
     </tr>

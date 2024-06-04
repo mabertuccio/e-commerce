@@ -1,6 +1,6 @@
 <?php
-include("../controllers/check-session-cart.php");
-include("../controllers/get-products.php");
+include ("../controllers/check-session-cart.php");
+include ("../controllers/get-products.php");
 
 $carrito = isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : array();
 
@@ -27,11 +27,14 @@ if (!empty($carrito)) {
     <link rel="stylesheet" href="../static/styles/main.css" />
     <link rel="stylesheet" href="../static/styles/table.css" />
     <link rel="stylesheet" href="../static/styles/validations.css">
+    <link rel="stylesheet" href="../static/styles/danger-validation.css">
     <link rel="stylesheet" href="../static/styles/summary.css" />
+    <link rel="stylesheet" href="../static/styles/checkout-modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" type="text/css" href="../static/styles/stylesHome.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
     </style>
@@ -42,15 +45,15 @@ if (!empty($carrito)) {
     <main>
         <div class="container">
             <div class="left-panel">
-                <h2 style="padding:10px;">Shopping Cart</h2>
+                <h2 style="padding:10px;">Carrito de Compras</h2>
                 <div class="shopping-cart">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -85,9 +88,9 @@ if (!empty($carrito)) {
 
             </div>
             <div class="right-panel">
-                <h2 style="padding:10px;">Summary</h2>
+                <h2 style="padding:10px;">Sumario</h2>
                 <div class="pricing">
-                    <h3>Pricing</h3>
+                    <h3 style="padding:0 0 10px 0;">Precios</h3>
                     <div class="summary-row">
                         <span>Subtotal</span>
                         <span id="subtotal">
@@ -107,7 +110,7 @@ if (!empty($carrito)) {
                         </span>
                     </div>
                     <div class="summary-row">
-                        <span>Shipping</span>
+                        <span>Envío</span>
                         <span id="shipping">
                             <span>
                                 <?php
@@ -125,7 +128,7 @@ if (!empty($carrito)) {
                         </span>
                     </div>
                     <div class="summary-row">
-                        <span>Tax</span>
+                        <span>Impuestos</span>
                         <span id="tax">
                             <span>
                                 <?php
@@ -144,7 +147,7 @@ if (!empty($carrito)) {
                         </span>
                     </div>
                     <div class="summary-row">
-                        <span>Grand Total</span>
+                        <span>Total General</span>
                         <span id="grand-total">
                             <span>
                                 <?php
@@ -162,31 +165,42 @@ if (!empty($carrito)) {
                         </span>
                     </div>
 
-                    <hr>
+                    <hr class="divider">
                     <form action="">
-                        <h3>Card Information</h3>
+                        <h3 style="padding:10px 0 10px 0;">Información de la Tarjeta</h3>
                         <div>
-                            <label for="name">Name:</label>
+                            <label for="name">Nombre:</label>
                             <div class="input-container">
                                 <input type="text" name="name" id="name" placeholder="Nombre" required />
                             </div>
+                            <span class="danger-validation" id="validacion-nombre">
+                                <p>Error en el nombre</p>
+                            </span>
                         </div>
                         <div>
                             <label for="dni">DNI:</label>
                             <div class="input-container">
                                 <input type="text" name="dni" id="dni" placeholder="XXXXXXXX" required />
                             </div>
+                            <span class="danger-validation" id="validacion-dni" style="display:none; color:red;">
+                                <p>Error en el DNI</p>
+                            </span>
                         </div>
                         <div>
-                            <label for="card-number" id="card-label">Card Number:</label>
+                            <label for="card-number" id="card-label">N° de Tarjeta:</label>
                             <div class="input-container">
-                                <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" required />
+                                <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX"
+                                    required />
                             </div>
+                            <span class="danger-validation" id="validacion-tarjeta" style="display:none; color:red;">
+                                <p>Error en la tarjeta</p>
+                            </span>
                         </div>
                         <div>
-                            <label for="expiration-date" id="expiration-label">Expiration Date:</label>
+                            <label for="expiration-date" id="expiration-label">Fecha de Vencimiento:</label>
                             <div class="input-container">
-                                <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY" required />
+                                <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY"
+                                    required />
                             </div>
                             <span class="danger-validation" id="validacion-fecha" style="display:none; color:red;">
                                 <p>Error en la fecha</p>
@@ -197,9 +211,23 @@ if (!empty($carrito)) {
                             <div class="input-container">
                                 <input type="text" id="cvv" name="cvv" placeholder="XXX" required />
                             </div>
+                            <span class="danger-validation" id="validacion-cvv" style="display:none; color:red;">
+                                <p>Error en el CVV</p>
+                            </span>
                         </div>
-                        <hr>
-                        <button id="checkout-button">Checkout</button>
+                        <hr class="divider">
+                        <div id="confirm-modal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>¿Está seguro que quiere confirmar la compra?</p>
+                                <button id="confirm-yes">Sí</button>
+                                <button id="confirm-no">No</button>
+                            </div>
+                        </div>
+                        <span class="danger-validation" id="checkout-validation" style="display:none; color:red;">
+                            <p>Complete los campos para confirmar la compra</p>
+                        </span>
+                        <button id="checkout-button">Comprar</button>
                     </form>
                 </div>
             </div>
@@ -215,6 +243,7 @@ if (!empty($carrito)) {
     <script src="../static/js/name-validation.js"></script>
     <script src="../static/js/dni-validation.js"></script>
     <script src="../static/js/remove-product.js"></script>
+    <script src="../static/js/checkout-handler.js"></script>
 </body>
 
 </html>

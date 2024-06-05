@@ -32,7 +32,7 @@ try {
     $mail->Body = "Hola, <strong>$name</strong>!<br>En la brevedad estaremos respondiendo tu consulta.<br>Electro Shop";
 
     $mail->send(); // Se envía el mail.
-    header("Location: contactoForm.php?status=success"); // Si el mail pudo enviarse con éxito se mostrará una notificación en color verde.
+    header("Location: ../pages/contactoForm.php?status=success"); // Si el mail pudo enviarse con éxito se mostrará una notificación en color verde.
 } catch (Exception $e) {
-    header("Location: contactoForm.php?status=error"); // Si el mail no pudo enviarse con éxito se mostrá una notificación en color rojo.
+    header("Location: ../pages/contactoForm.php?status=error"); // Si el mail no pudo enviarse con éxito se mostrá una notificación en color rojo.
 }

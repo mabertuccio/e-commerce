@@ -31,5 +31,36 @@ document.getElementById("confirm-no").addEventListener("click", function (e) {
 });
 
 document.getElementById("confirm-yes").addEventListener("click", function () {
-  // Acá se redirige a la página que guarda la commpra en la base de datos
+  const date = getCurrentDate();
+  const grandtotal = getGrandTotal();
+
+  const billData = {
+    date: date,
+    grandtotal: grandtotal,
+  };
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "../controllers/finish-purchase.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 2 && xhr.status === 200) {
+      console.log("Factura guardada con éxito");
+      window.location.reload();
+    }
+  };
+
+  xhr.send(JSON.stringify(billData));
 });
+
+function getCurrentDate() {
+  const date = new Date();
+  return date.toISOString().slice(0, 19).replace("T", "");
+}
+
+function getUserId() {}
+
+function getGrandTotal() {
+  return parseFloat(
+    document.getElementById("grand-total").innerText.replace("$", "")
+  );
+}

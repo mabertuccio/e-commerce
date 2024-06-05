@@ -35,9 +35,11 @@ cardNumberInput.addEventListener("input", () => {
       if (firstFourDigits < 4000) {
         // Si los primeros 4 números son menores a 4000, se considera una tarjeta de crédito
         cardLabel.textContent = "N° de Tarjeta de Credito:";
+        document.getElementById("card-type").value = "credito";
       } else {
         // De lo contrario, se considera una tarjeta de débito
         cardLabel.textContent = "N° de Tarjeta de Debito:";
+        document.getElementById("card-type").value = "debito";
       }
     }
   } else {

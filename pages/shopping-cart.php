@@ -93,8 +93,8 @@ if (!empty($carrito)) {
                     <h3 style="padding:0 0 10px 0;">Precios</h3>
                     <div class="summary-row">
                         <span>Subtotal</span>
-                        <span id="subtotal">
-                            <span>
+                        <span>
+                            <span id="subtotal">
                                 <?php
                                 /*
                             ------------------
@@ -111,8 +111,8 @@ if (!empty($carrito)) {
                     </div>
                     <div class="summary-row">
                         <span>Envío</span>
-                        <span id="shipping">
-                            <span>
+                        <span>
+                            <span id="shipping">
                                 <?php
                                 /*
                             ------------------
@@ -129,8 +129,8 @@ if (!empty($carrito)) {
                     </div>
                     <div class="summary-row">
                         <span>Impuestos</span>
-                        <span id="tax">
-                            <span>
+                        <span>
+                            <span id="tax">
                                 <?php
                                 /*
                             ------------------
@@ -148,8 +148,8 @@ if (!empty($carrito)) {
                     </div>
                     <div class="summary-row">
                         <span>Total General</span>
-                        <span id="grand-total">
-                            <span>
+                        <span>
+                            <span id="grand-total-span">
                                 <?php
                                 /*
                             ------------------
@@ -166,7 +166,7 @@ if (!empty($carrito)) {
                     </div>
 
                     <hr class="divider">
-                    <form action="">
+                    <form action="../controllers/finish-purchase.php" method="POST" id="purchase-form">
                         <h3 style="padding:10px 0 10px 0;">Información de la Tarjeta</h3>
                         <div>
                             <label for="name">Nombre:</label>
@@ -191,6 +191,7 @@ if (!empty($carrito)) {
                             <div class="input-container">
                                 <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX"
                                     required />
+                                <input type="hidden" name="card-type" id="card-type" />
                             </div>
                             <span class="danger-validation" id="validacion-tarjeta" style="display:none; color:red;">
                                 <p>Error en la tarjeta</p>
@@ -205,6 +206,7 @@ if (!empty($carrito)) {
                             <span class="danger-validation" id="validacion-fecha" style="display:none; color:red;">
                                 <p>Error en la fecha</p>
                             </span>
+                            <input type="hidden" id="grand-total" name="grand-total" value="<?php echo $total ?>">
                         </div>
                         <div>
                             <label for="cvv" id="cvv-label">CVV:</label>
@@ -244,6 +246,7 @@ if (!empty($carrito)) {
     <script src="../static/js/dni-validation.js"></script>
     <script src="../static/js/remove-product.js"></script>
     <script src="../static/js/checkout-handler.js"></script>
+    <script src="../static/js/increment-quantity.js"></script>
 </body>
 
 </html>

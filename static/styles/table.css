@@ -29,10 +29,42 @@
   height: auto;
 }
 
-#quantity {
+.quantity-input {
   width: 45px;
-  height: 35px;
+  height: 40px;
   text-align: center;
+}
+
+#increment-btn {
+  display: inline;
+  width: 20%;
+  height: 40px;
+  padding: 10px;
+  background-color: #303b79;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12 px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+#decrement-btn {
+  display: inline;
+  width: 20%;
+  height: 40px;
+  padding: 10px;
+  background-color: #303b79;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12 px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
 }
 
 .remove-button {

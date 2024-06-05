@@ -1,6 +1,6 @@
 <?php
-include ("../controllers/check-session-cart.php");
-include ("../controllers/get-products.php");
+include("../controllers/check-session-cart.php");
+include("../controllers/get-products.php");
 
 $carrito = isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : array();
 
@@ -24,6 +24,7 @@ if (!empty($carrito)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="../static/styles/main.css" />
     <link rel="stylesheet" href="../static/styles/table.css" />
     <link rel="stylesheet" href="../static/styles/validations.css">
@@ -33,8 +34,7 @@ if (!empty($carrito)) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" type="text/css" href="../static/styles/stylesHome.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
     </style>
@@ -88,7 +88,7 @@ if (!empty($carrito)) {
 
             </div>
             <div class="right-panel">
-                <h2 style="padding:10px;">Sumario</h2>
+                <h2 style="padding:10px;">Resumen</h2>
                 <div class="pricing">
                     <?php
                     if (empty($product)) {
@@ -173,9 +173,9 @@ if (!empty($carrito)) {
                     <form action="../controllers/finish-purchase.php" method="POST" id="purchase-form">
                         <h3 style="padding:10px 0 10px 0;">Información de la Tarjeta</h3>
                         <div>
-                            <label for="name">Nombre:</label>
+                            <label for="name">Nombre Completo:</label>
                             <div class="input-container">
-                                <input type="text" name="name" id="name" placeholder="Nombre" required />
+                                <input type="text" name="name" id="name" placeholder="Nombre Completo" required />
                             </div>
                             <span class="danger-validation" id="validacion-nombre">
                                 <p>Error en el nombre</p>
@@ -193,8 +193,7 @@ if (!empty($carrito)) {
                         <div>
                             <label for="card-number" id="card-label">N° de Tarjeta:</label>
                             <div class="input-container">
-                                <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX"
-                                    required />
+                                <input type="text" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" required />
                                 <input type="hidden" name="card-type" id="card-type" />
                             </div>
                             <span class="danger-validation" id="validacion-tarjeta" style="display:none; color:red;">
@@ -204,8 +203,7 @@ if (!empty($carrito)) {
                         <div>
                             <label for="expiration-date" id="expiration-label">Fecha de Vencimiento:</label>
                             <div class="input-container">
-                                <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY"
-                                    required />
+                                <input type="text" name="expiration-date" id="expiration-date" placeholder="MM/YY" required />
                             </div>
                             <span class="danger-validation" id="validacion-fecha" style="display:none; color:red;">
                                 <p>Error en la fecha</p>

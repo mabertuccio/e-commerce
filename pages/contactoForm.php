@@ -59,16 +59,16 @@
       <?php endif; ?>
       <div class="user-info">
         <label for="names">Nombre*</label>
-        <input type="text" id="name" name="name" />
+        <input type="text" id="name" name="name" required />
 
-        <label for="phono">Telefono</label>
-        <input type="text" id="phone" name="phone" />
+        <label for="phono">Telefono*</label>
+        <input type="text" id="phone" name="phone" required />
 
         <label for="email">Correo Electronico*</label>
-        <input type="text" id="email" name="email" />
+        <input type="email" id="email" name="email" required />
 
         <label for="mensaje">Mensaje*</label>
-        <textarea id="mensaje" cols="30" rows="10" name="message"></textarea>
+        <textarea id="mensaje" cols="30" rows="10" name="message" required></textarea>
 
         <input type="submit" value="Enviar mensaje" id="btnSend" />
       </div>

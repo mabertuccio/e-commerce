@@ -22,26 +22,22 @@
             <h2>Quienes somos</h2>
             <br>
             <br>
-            <div>
-                <p>Desde 1992 desarrollamos nuestra actividad en el mercado informático argentino.</p>
-                <p>Estamos dedicados a la venta de equipos, accesorios e insumos tanto a particulares
-                    como empresas.</p>
-                <p> Contamos además con un servicio técnico especializado.</p>
-                <p>Somos distribuidores de las más prestigiosas marcas. Disponiendo de un amplio y variado stock.</p>
-                Comercializamos computadoras, notebook, dispositivos moviles, impresoras, monitores,
-                insumos y todo lo relacionado con la informática.
-                <br>
-                Nuestro compromiso es brindar la mejor experiencia en el servicio al Cliente,
-                desde el usuário Hogareño, hasta las grandes empresas con un
-                servicio de asesoramiento y ventas de equipos informáticos,
-                <br>
-                además de un excelente servicio de post-venta permanente
+            <div style="padding-left:150px;padding-right:150px; text-align: justify; text-justify: inter-word;">
+                <p>
+                    Desde 1992 desarrollamos nuestra actividad en el mercado informático argentino.
+                    Estamos dedicados a la venta de equipos, accesorios e insumos tanto a particulares como a empresas.
+                    Contamos además con un servicio técnico especializado.
+                    Somos distribuidores de las más prestigiosas marcas. Disponiendo de un amplio y variado stock.
+                    Comercializamos computadoras, notebook, dispositivos móviles, impresoras, monitores, insumos y todo lo relacionado con la informática.
+                    Nuestro compromiso es brindar la mejor experiencia en el servicio al Cliente,
+                    desde el usuario Hogareño, hasta las grandes empresas con un
+                    servicio de asesoramiento y ventas de equipos informáticos,
+                    además de un excelente servicio de post-venta permanente.
                 </p>
             </div>
         </div>
         <section class="team contenedor" id="equipo">
             <h3>Servicio Personalizado</h3>
-            <p class="after">Garantizado</p>
             <div class="card">
                 <div class="content-card">
                     <div class="people">

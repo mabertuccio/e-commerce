@@ -19,9 +19,11 @@ function generateProduct($name, $price, $quantity, $id, $cantidad_maxima)
         </td>
         <td>$name</td>
         <td>
-            <button id='increment-btn' data-id='$id'>+</button>
-            <input type='text' value='$quantity' min='1' max='$cantidad_maxima' class='quantity-input' data-id='$id' data-price='$price' />
-            <button id='decrement-btn' data-id='$id'>-</button>
+        <button class='btn-quantity' id='decrement-btn' data-id='$id'><span class='material-symbols-outlined icon-operation'>remove</span></button>
+            <input type='text' value='$quantity' min='1' max='$cantidad_maxima' class='quantity-input' data-id='$id' data-price='$price' />            
+            <button id='increment-btn' data-id='$id'><span class='material-symbols-outlined icon-operation'>
+            add
+            </span></button>
         </td>
         <td id='price-$id'>$$price</td>
         <td>

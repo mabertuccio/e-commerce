@@ -41,7 +41,8 @@
   height: 40px;
   padding: 10px;
   background-color: #303b79;
-  color: #ffffff;
+  border: 2px solid white;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -57,11 +58,12 @@
   height: 40px;
   padding: 10px;
   background-color: #303b79;
-  color: #ffffff;
+  border: 2px solid white;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 12 px;
+  font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
@@ -69,7 +71,6 @@
 
 .remove-button {
   display: block;
-  width: 60%;
   height: 40px;
   padding: 10px;
   background-color: #e14242;
@@ -85,4 +86,8 @@
 
 .remove-button:hover {
   background-color: #c21f1f;
+}
+
+.icon-operation {
+  font-size: 12px;
 }

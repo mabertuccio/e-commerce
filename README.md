@@ -80,10 +80,10 @@ CREATE TABLE productos (
 CREATE TABLE pagos (
     id_pago INT AUTO_INCREMENT PRIMARY KEY,
     dni VARCHAR(50) NOT NULL,
-    nombre_en_tarjeta VARCHAR(50) NOT NULL
+    nombre_en_tarjeta VARCHAR(50) NOT NULL,
     tipo VARCHAR(50) NOT NULL,
     numero_tarjeta VARCHAR(16) NOT NULL,
-    fecha_vencimiento DATE NOT NULL,
+    fecha_vencimiento DATE NOT NULL
 );
 
 -- Tabla de facturas

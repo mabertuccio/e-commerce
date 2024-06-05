@@ -90,76 +90,80 @@ if (!empty($carrito)) {
             <div class="right-panel">
                 <h2 style="padding:10px;">Sumario</h2>
                 <div class="pricing">
-                    <h3 style="padding:0 0 10px 0;">Precios</h3>
-                    <div class="summary-row">
-                        <span>Subtotal</span>
+                    <?php
+                    if (empty($product)) {
+                        echo "<span id='empty-cart-message'><p>Carrito vacío.</p></span>";
+                    }
+                    ?>
+                    <?php
+                    if (!empty($product)) {
+                        echo "<h3 style='padding:0 0 10px 0;'>Precios</h3>";
+                    }
+                    ?>
+                    <div class="summary-row" id="pricing-top">
+                        <?php
+                        if (!empty($product)) {
+                            echo "<span>Subtotal</span>";
+                        }
+                        ?>
                         <span>
-                            <span id="subtotal">
+                            <span id="subtotal" class="summary-span">
                                 <?php
-                                /*
-                            ------------------
-                            28/05/2024 - 16:17
-                            ------------------
-                            Se encarga de calcular y mostrar la suma de los precios de los productos.
-                            ------------------
-                            */
-                                $subtotal = array_sum($precios);
-                                echo "$$subtotal";
+                                if (!empty($product)) {
+                                    $subtotal = array_sum($precios);
+                                    echo "$$subtotal";
+                                }
                                 ?>
                             </span>
                         </span>
                     </div>
                     <div class="summary-row">
-                        <span>Envío</span>
+                        <?php
+                        if (!empty($product)) {
+                            echo "<span>Envío</span>";
+                        }
+                        ?>
                         <span>
-                            <span id="shipping">
+                            <span id="shipping" class="summary-span">
                                 <?php
-                                /*
-                            ------------------
-                            28/05/2024 - 16:18
-                            ------------------
-                            Se encarga de declarar y mostrar el precio del envio.
-                            ------------------
-                            */
-                                $envio = 10;
-                                echo "$$envio";
+                                if (!empty($product)) {
+                                    $envio = 10;
+                                    echo "$$envio";
+                                }
                                 ?>
                             </span>
                         </span>
                     </div>
                     <div class="summary-row">
-                        <span>Impuestos</span>
+                        <?php
+                        if (!empty($product)) {
+                            echo "<span>Impuestos</span>";
+                        }
+                        ?>
                         <span>
-                            <span id="tax">
+                            <span id="tax" class="summary-span">
                                 <?php
-                                /*
-                            ------------------
-                            28/05/2024 - 16:19
-                            ------------------
-                            Se encarga de calcular y mostrar el impuesto.
-                            Se asume que el impuesto es del 21% sobre el total de los productos a comprar.
-                            ------------------
-                            */
-                                $impuesto = $subtotal * 0.21;
-                                echo "$$impuesto";
+                                if (!empty($product)) {
+                                    $impuesto = $subtotal * 0.21;
+                                    echo "$$impuesto";
+                                }
                                 ?>
                             </span>
                         </span>
                     </div>
-                    <div class="summary-row">
-                        <span>Total General</span>
+                    <div class="summary-row" id="pricing-bottom">
+                        <?php
+                        if (!empty($product)) {
+                            echo "<span>Total General</span>";
+                        }
+                        ?>
                         <span>
-                            <span id="grand-total-span">
+                            <span id="grand-total-span" class="summary-span">
                                 <?php
-                                /*
-                            ------------------
-                            28/05/2024 - 16:20
-                            ------------------
-                            Se encarga de calcular y mostrar el precio final de la compra de productos.
-                            ------------------
-                            */
-                                $total = $subtotal + $impuesto + $envio;
-                                echo "$$total";
+                                if (!empty($product)) {
+                                    $total = $subtotal + $impuesto + $envio;
+                                    echo "$$total";
+                                }
                                 ?>
                             </span>
                         </span>

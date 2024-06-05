@@ -244,6 +244,7 @@ if (!empty($carrito)) {
     <script src="../static/js/dni-validation.js"></script>
     <script src="../static/js/remove-product.js"></script>
     <script src="../static/js/checkout-handler.js"></script>
+    <script src="../static/js/increment-quantity.js"></script>
 </body>
 
 </html>

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindParam(':direccion', $direccion);
             $stmt->execute();
 
-            echo "Proveedor actualizado correctamente.";
+            header("Location: ../../pages/admin/proveedores.php");
         } catch (PDOException $e) {
             echo "Error al actualizar el proveedor: " . $e->getMessage();
         }

@@ -2,12 +2,12 @@
 include '../../controllers/bbdd.php';
 session_start();
 if (!isset($_SESSION["usuario"])) {
-   header("Location: ../../index.html");
+   header("Location: ../../index.php");
    exit;
 }
 $usuario = $_SESSION["usuario"];
 
-$sql = "SELECT p.id, p.nombre, p.descripcion,p.precio,p.cantidad,p1.nombre as proveedor_nombre FROM `productos` as p  INNER JOIN proveedores as p1 ON p.id_proveedor=p1.id WHERE p.estado=1 AND p1.estado=1;";
+$sql = "SELECT p.id, p.nombre, p.descripcion,p.precio,p.cantidad,p1.nombre as proveedor_nombre FROM `productos` as p  INNER JOIN proveedores as p1 ON p.id_proveedor=p1.id WHERE p.estado=1";
 $stmt = $conn->query($sql);
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

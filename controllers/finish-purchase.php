@@ -85,6 +85,8 @@ try {
         $id_producto = $producto["id"];
         $cantidad = $producto["cantidad"];
         $precio_unitario = getUnitaryPrice($id_producto, $conn);
+
+        // Inserta los ítems de la factura
         $sql_insert_items = "INSERT INTO items_factura (id_factura, id_producto, cantidad, precio_unitario) VALUES (?, ?, ?, ?)";
         $stmt_items = $conn->prepare($sql_insert_items);
         $stmt_items->bindParam(1, $id_factura);
@@ -93,11 +95,21 @@ try {
         $stmt_items->bindParam(4, $precio_unitario);
         $stmt_items->execute();
         $stmt_items->closeCursor();
+
+        // Descontar la cantidad del producto en la base de datos
+        $sql_update_stock = "UPDATE productos SET cantidad = cantidad - ? WHERE id = ?";
+        $stmt_update_stock = $conn->prepare($sql_update_stock);
+        $stmt_update_stock->bindParam(1, $cantidad);
+        $stmt_update_stock->bindParam(2, $id_producto);
+        $stmt_update_stock->execute();
+        $stmt_update_stock->closeCursor();
     }
 
     // Confirma la transacción
     $conn->commit();
     echo "Transacción completada exitosamente.";
+
+    // Limpiar el carrito de compras
     if (isset($_COOKIE['carrito'])) {
         unset($_COOKIE['carrito']);
         setcookie('carrito', '', time() - 3600, '/'); // Establece el tiempo de expiración en el pasado

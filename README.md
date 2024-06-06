@@ -8,7 +8,7 @@ El proyecto consistirá en el desarrollo de un e-commerce utilizando tecnología
 
 - **Aprendizaje de Desarrollo Front-End y Back-End:** Los estudiantes tendrán la oportunidad de aplicar conceptos y técnicas aprendidas en las materias de Desarrollo Front-End y Back-End en un proyecto real.
 - **Implementación de MVC:** Se buscará que los estudiantes comprendan y apliquen el patrón de diseño Modelo-Vista-Controlador (MVC) para organizar y estructurar el código de manera eficiente y mantenible.
-- **Desarrollo de un E-commerce Funcional:** El objetivo final es desarrollar un e-commerce completamente funcional que permita a los usuarios navegar por productos, agregar artículos al carrito de compras, realizar pagos y gestionar sus pedidos.
+- **Desarrollo de un E-commerce Funcional:** El objetivo final es desarrollar un e-commerce completamente funcional que permita a los usuarios navegar por productos, agregar artículos al carrito de compras, realizar pagos.
 
 ## Tecnologías Utilizadas
 
@@ -19,13 +19,12 @@ El proyecto consistirá en el desarrollo de un e-commerce utilizando tecnología
 
 ## Funcionalidades Principales
 
-1. **Registro de Usuarios:** Los usuarios podrán registrarse en la plataforma proporcionando información básica como nombre, dirección de correo electrónico y contraseña.
+1. **Registro de Usuarios:** Los usuarios podrán registrarse en la plataforma proporcionando información básica como correo electrónico y contraseña.
 2. **Inicio de Sesión:** Los usuarios registrados podrán iniciar sesión en sus cuentas utilizando su correo electrónico y contraseña.
-3. **Exploración de Productos:** Los usuarios podrán navegar por el catálogo de productos disponibles en el e-commerce, filtrarlos por categorías y realizar búsquedas.
+3. **Exploración de Productos:** Los usuarios podrán navegar por el catálogo de productos disponibles en el e-commerce.
 4. **Carrito de Compras:** Los usuarios podrán agregar productos al carrito de compras, modificar las cantidades y eliminar productos.
 5. **Proceso de Pago:** Una vez que los usuarios hayan seleccionado los productos deseados, podrán proceder al proceso de pago utilizando métodos de pago seguros.
-6. **Gestión de Pedidos:** Los usuarios podrán ver el historial de pedidos realizados, verificar el estado de los mismos y realizar seguimiento del envío.
-7. **Imprimir Compras:** Los usuarios podrán imprimir en pdf el detalle del pedido realizado.
+6. **Imprimir:** Los usuarios administradores podrán imprimir en pdf el detalle del cada modulo del e-commerce.
 
 ## Organización del Proyecto
 
@@ -39,24 +38,16 @@ El proyecto se organizará en base al patrón de diseño Modelo-Vista-Controlado
 
 ```
 -- Tabla de usuarios
-CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR(100) NOT NULL,
-    tipo_usuario VARCHAR(50) NOT NULL,
-    estado TINYINT NOT NULL DEFAULT 1, -- 1 para activo, 0 para inactivo
-    CHECK (tipo_usuario IN ('Cliente', 'Vendedor'))
-);
--- Tabla de usuarios en caso de tener problemas con el check
-CREATE TABLE usuarios (
+CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
     tipo_usuario ENUM('Cliente', 'Vendedor') NOT NULL,
-    estado TINYINT NOT NULL DEFAULT 1
-);
+    estado TINYINT NOT NULL DEFAULT 1 -- 1 para activo, 0 para inactivo
+) ENGINE=INNODB;
+
 -- Tabla de proveedores
-CREATE TABLE proveedores (
+CREATE TABLE IF NOT EXISTS proveedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     direccion VARCHAR(255),
@@ -64,7 +55,7 @@ CREATE TABLE proveedores (
 );
 
 -- Tabla de productos
-CREATE TABLE productos (
+CREATE TABLE IF NOT EXISTS productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT,
@@ -77,7 +68,7 @@ CREATE TABLE productos (
 );
 
 -- Tabla de pagos
-CREATE TABLE pagos (
+CREATE TABLE IF NOT EXISTS pagos (
     id_pago INT AUTO_INCREMENT PRIMARY KEY,
     dni VARCHAR(50) NOT NULL,
     nombre_en_tarjeta VARCHAR(50) NOT NULL,
@@ -87,7 +78,7 @@ CREATE TABLE pagos (
 );
 
 -- Tabla de facturas
-CREATE TABLE facturas (
+CREATE TABLE IF NOT EXISTS facturas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fecha DATE NOT NULL,
     id_usuario INT NOT NULL,
@@ -98,7 +89,7 @@ CREATE TABLE facturas (
 );
 
 -- Tabla de items de factura
-CREATE TABLE items_factura (
+CREATE TABLE IF NOT EXISTS items_factura (
     id_item INT AUTO_INCREMENT PRIMARY KEY,
     id_factura INT NOT NULL,
     id_producto INT NOT NULL,

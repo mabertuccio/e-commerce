@@ -9,7 +9,7 @@
         </div>
         <div class="login-register-container">
             <span id="nombreUsuario"></span>
-            <a class="shopping-cart-button" id="shopButton" href="./shopping-cart.php">
+            <a class="shopping-cart-button" id="shopButton" href="http://localhost/e-commerce/pages/shopping-cart.php">
                 <span class="material-symbols-outlined">
                     shopping_cart
                 </span>

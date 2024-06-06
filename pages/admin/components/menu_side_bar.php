@@ -1,3 +1,9 @@
+<?php
+
+// Supongamos que el correo electrónico del usuario está almacenado en $_SESSION['usuario']
+$correo = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : '';
+$nombreUsuario = explode('@', $correo)[0];
+?>
 <div class="left-column">
 
     <div class="logo">
@@ -5,12 +11,17 @@
 
     </div>
     <h3 style="padding-left: 15px;padding-bottom: 15px;">Usuario:
-        <span id="nombreUsuario"></span>
+        <div>
+            <span id="nombreUsuario">
+                <?php echo htmlspecialchars($nombreUsuario, ENT_QUOTES, 'UTF-8'); ?>
+            </span>
+        </div>
     </h3>
     <ul class="menu">
         <li><a href="./usuarios.php">Usuarios</a></li>
         <li><a href="./productos.php">Productos</a></li>
         <li><a href="./proveedores.php">Proveedores</a></li>
+        <li><a href="./facturas.php">Facturacion</a></li>
     </ul>
     <form action="../../controllers/logout.php" method="post">
         <div style="width: 150px; margin: auto; margin-top: 10px;">

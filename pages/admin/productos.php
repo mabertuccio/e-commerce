@@ -5,7 +5,6 @@ if (!isset($_SESSION["usuario"])) {
    header("Location: ../../index.php");
    exit;
 }
-$usuario = $_SESSION["usuario"];
 
 $sql = "SELECT p.id, p.nombre, p.descripcion,p.precio,p.cantidad,p1.nombre as proveedor_nombre FROM `productos` as p  INNER JOIN proveedores as p1 ON p.id_proveedor=p1.id WHERE p.estado=1";
 $stmt = $conn->query($sql);
@@ -32,7 +31,7 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
    <div class="container">
-      <?php include 'components/menu_side_bar.html'; ?>
+      <?php include 'components/menu_side_bar.php'; ?>
       <?php include 'components/modal.html'; ?>
       <div class="right-column">
          <div class="content">
@@ -66,7 +65,7 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div style="width: 50px; " class="mr-1">
                            <!-- Botón para eliminar con color rojo -->
                            <button class="btn btn-danger" onclick="openModal(<?php echo $producto['id']; ?>, '<?php echo $producto['nombre']; ?>', '../../controllers/admin/eliminar_producto.php')">
-                              <i class="fas fa-trash-alt"></i>
+                              <i class=" fas fa-trash-alt"></i>
                            </button>
                         </div>
                         <!-- Botón para editar con color gris -->
@@ -93,43 +92,6 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../../static/js/productos.js"></script>
 <script src="../../static/js/modal.js"></script>
-<script>
-   // Funcion que formatea el correo del usuario partiendolo en el "@" y devolviendo la parte que no es el dominio.
-   function formatearNombreUsuario(correo) {
-      var partes = correo.split('@');
-      return partes[0];
-   }
 
-   function ocultarBotones(listaDeBotones) {
-      listaDeBotones.forEach((element) => {
-         element.style.display = 'none';
-      });
-   }
-
-   // Función para cargar dinámicamente el nombre de usuario
-   function cargarNombreUsuario() {
-      // Realizar una petición al servidor para verificar la sesión
-      fetch('../../controllers/check_session.php')
-         .then((response) => response.json())
-         .then((data) => {
-            // Verificar si el usuario está autenticado            
-            if (data.authenticated) {
-               // Si el usuario está autenticado, mostrar su nombre de usuario
-               document.getElementById('nombreUsuario').innerHTML =
-                  formatearNombreUsuario(data.usuario);
-               document.getElementById('loginButton').style.display = 'none';
-               ocultarBotones(document.querySelectorAll('#addProdButtonUnloged'));
-            } else {
-               // Si el usuario no está autenticado, mostrar un mensaje predeterminado
-               document.getElementById('logoutButton').style.display = 'none';
-               document.getElementById('shopButton').style.display = 'none';
-               ocultarBotones(document.querySelectorAll('#addProdButton'));
-            }
-         });
-   }
-
-   // Llamar a la función al cargar la página
-   window.onload = cargarNombreUsuario;
-</script>
 
 </html>

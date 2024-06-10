@@ -16,6 +16,15 @@ El proyecto se enfoca en el desarrollo de un e-commerce mediante tecnologías we
 - **CSS:** Se asume su uso para el diseño y estilizado de las páginas.
 - **JavaScript:** Opcionalmente, para agregar interactividad y dinamismo a la aplicación web.
 
+## Tecnologías Necesarias
+
+- 🐘 **PHP:** Lenguaje de programación para el desarrollo del lado del servidor.
+- 🐬 **MySQL:** Sistema de gestión de bases de datos.
+- 🐱 **XAMPP:** Paquete de software que incluye Apache, MySQL, PHP y Perl.
+- 🌐 **Navegador Web:** Para acceder y probar la aplicación (por ejemplo, Chrome, Firefox).
+- 📦 **Composer:** Administrador de dependencias para PHP.
+- 📧 **PHPMailer:** Librería para el envío de correos electrónicos desde PHP.
+
 ## Funcionalidades Principales
 
 1. **Registro de Usuarios:** Los usuarios pueden registrarse proporcionando información básica como correo electrónico y contraseña.

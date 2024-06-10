@@ -115,16 +115,16 @@ function generarDatosPrueba($conn)
 {
     // Generación de datos aleatorios
     $insertarUsuarios = "INSERT INTO usuarios (email, password, tipo_usuario) VALUES
-         ('usuario1@example.com', :password1, 'Vendedor'),
-         ('usuario2@example.com', :password2, 'Cliente'),
+         ('admin@admin.com', :password1, 'Vendedor'),
+         ('cliente@cliente.com', :password2, 'Cliente'),
          ('usuario3@example.com', :password3, 'Vendedor'),
          ('usuario4@example.com', :password4, 'Cliente'),
          ('usuario5@example.com', :password5, 'Vendedor');";
 
     $stmt = $conn->prepare($insertarUsuarios);
     $stmt->execute([
-        ':password1' => password_hash('password1', PASSWORD_BCRYPT),
-        ':password2' => password_hash('password2', PASSWORD_BCRYPT),
+        ':password1' => password_hash('1234', PASSWORD_BCRYPT),
+        ':password2' => password_hash('1234', PASSWORD_BCRYPT),
         ':password3' => password_hash('password3', PASSWORD_BCRYPT),
         ':password4' => password_hash('password4', PASSWORD_BCRYPT),
         ':password5' => password_hash('password5', PASSWORD_BCRYPT)

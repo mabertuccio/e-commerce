@@ -4,7 +4,7 @@ include("../controllers/get-products.php");
 
 $carrito = isset($_COOKIE['carrito']) ? json_decode($_COOKIE['carrito'], true) : array();
 
-echo "<h2>Productos en el carrito:</h2>";
+/* echo "<h2>Productos en el carrito:</h2>";
 
 if (!empty($carrito)) {
     foreach ($carrito as $producto) {
@@ -15,7 +15,7 @@ if (!empty($carrito)) {
 } else {
     echo "<p>No hay productos en el carrito.</p>";
 }
-
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">

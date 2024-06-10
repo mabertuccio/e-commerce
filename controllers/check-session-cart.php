@@ -31,9 +31,13 @@ if (isAuthenticated()) {
             case "Cliente":
                 break;
             case "Vendedor":
-                redirectTo("https://localhost/e-commerce/pages/admin/usuarios.php");
+                header("Location: ../pages/admin/usuarios.php");
+                /* redirectTo("./pages/admin/usuarios.php"); */
+                break;
             default:
-                redirectTo("https://localhost/e-commerce/pages/login.php");
+                header("Location: ../pages/login.php");
+                break;
+                /* redirectTo("./pages/login.php"); */
         }
     } else {
         // Si el tipo de usuario no llegase a estar definido en la sesión, se maneja el error.

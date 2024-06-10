@@ -94,7 +94,8 @@ if (!empty($carrito)) {
     <link rel="icon" href="">
     <link rel="stylesheet" type="text/css" href="../static/styles/stylesHome.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/modal-add.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
     </style>
@@ -144,7 +145,7 @@ if (!empty($carrito)) {
     <section class="container-products">
         <h2 class="text-most-sold">NUESTROS PRODUCTOS</h2>
         <div class="container-products-cards">
-            <?php crearTarjetasProductos("SELECT * FROM productos", $conn, "login.php") ?>
+            <?php crearTarjetasProductos("SELECT * FROM productos WHERE estado = 1", $conn, "login.php") ?>
         </div>
     </section>
 
